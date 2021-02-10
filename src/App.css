@@ -5,6 +5,7 @@
 :root {
     --primary: #2eb0ba;
     --grey: #999999;
+    --bg: #eaedee;
 }
 * {
     box-sizing: border-box;
@@ -144,4 +145,54 @@
     color: black;
     font-size: 14px;
     margin-top: 16px;
+}
+/* ====================
+       Offer
+======================= */
+.Offer {
+    background: var(--bg);
+}
+.offer-container {
+    width: 1280px;
+    margin: 0px auto;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.offer-container > div {
+    height: 605px;
+    width: 450px;
+    background: white;
+}
+
+.Offer img {
+    height: 605px;
+    width: 450px;
+}
+.offer-details > div {
+}
+.offer-details > div > span:not(:nth-child(2n)) {
+    color: var(--grey);
+    margin-right: 10px;
+}
+.offer-owner img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.offer-infos button {
+    color: #fff;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    height: 36px;
+    padding: 0 16px;
+    line-height: 36px;
+    margin-top: 32px;
 }
