@@ -1,6 +1,9 @@
 /* ====================
       GLOBAL RULES
 ======================= */
+:root {
+    --primary: #2eb0ba;
+}
 * {
     box-sizing: border-box;
 }
@@ -8,6 +11,35 @@
 /* ====================
        HEADER
 ======================= */
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1280px;
+    margin: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid pink;
+}
 .Header img {
     height: 40px;
+}
+.Header button {
+    height: 30px;
+    width: 115px;
+    border: 1px solid #2cb1ba;
+    border-radius: 5px;
+    font-family: "Maison Neue";
+    font-size: 12px;
+    outline: none;
+    color: var(--primary);
+    background: white;
+    cursor: pointer;
+}
+.Header div button:first-child {
+    background: pink;
+    margin-right: 20px;
+}
+.Header > button {
+    color: white;
+    background: var(--primary);
 }
