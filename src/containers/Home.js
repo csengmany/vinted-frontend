@@ -15,13 +15,14 @@ const Home = ({ data }) => {
 
             <div className="products">
                 {data.offers.map((offer, index) => {
+                    console.log(offer._id);
                     return (
-                        <Product key={offer._id} offer={offer} index={index} />
+                        <Product key={offer._id} offer={offer} id={offer._id} />
                     );
                 })}
             </div>
 
-            <Link to={`/offers/`}>Go to offers</Link>
+            <Link to={`/offer/`}>Go to offers</Link>
         </div>
     );
 };

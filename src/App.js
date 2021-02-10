@@ -39,7 +39,10 @@ function App() {
         <Router>
             <Header />
             <Switch>
-                <Route path="/offers">
+                {/* <Route path="/offers">
+                    <Offers />
+                </Route> */}
+                <Route path="/offer/:id">
                     <Offer />
                 </Route>
                 <Route path="/">
