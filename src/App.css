@@ -4,3 +4,10 @@
 * {
     box-sizing: border-box;
 }
+
+/* ====================
+       HEADER
+======================= */
+.Header img {
+    height: 40px;
+}
