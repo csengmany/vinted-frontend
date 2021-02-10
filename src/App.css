@@ -43,3 +43,41 @@
     color: white;
     background: var(--primary);
 }
+/* ====================
+       Home
+======================= */
+
+.Home img {
+    height: 455px;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-txt {
+    height: 220px;
+    width: 360px;
+    background: white;
+    padding: 25px;
+    border-radius: 3px;
+    font-size: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 75px;
+    box-shadow: 0 0 2px rgb(17 17 17 / 24%);
+}
+
+.home-txt button {
+    height: 45px;
+    width: 187px;
+    background-color: var(--primary);
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 0 14px;
+    margin-top: 32px;
+}

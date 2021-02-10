@@ -1,24 +1,16 @@
 import { Link } from "react-router-dom";
+import hero from "../assets/images/hero.jpg";
 const Home = () => {
     return (
         <div className="Home">
-            <h1>Home Container</h1>
-            <div>
-                <a
-                    href="https://vinted-api-backend.herokuapp.com/"
-                    target="_blank"
-                >
-                    Go to backend
-                </a>
+            <div className="home-bg">
+                <img src={hero} alt="background vinted" />
             </div>
-            <div>
-                <a
-                    href="https://vinted-api-backend.herokuapp.com/offers/"
-                    target="_blank"
-                >
-                    Go to backend offers
-                </a>
+            <div className="home-txt">
+                <span>Prêts à faire du tri dans vos placards ?</span>
+                <button>Commencer à vendre</button>
             </div>
+
             <Link to={`/offers/`}>Go to offers</Link>
         </div>
     );
