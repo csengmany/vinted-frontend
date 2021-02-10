@@ -81,3 +81,24 @@
     padding: 0 14px;
     margin-top: 32px;
 }
+
+.user-avatar img {
+    height: 40px;
+    width: 40px;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.product-img img {
+    width: 235px;
+    height: 365px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+.product {
+    margin: 10px, 20px;
+}
