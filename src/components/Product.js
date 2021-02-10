@@ -5,9 +5,9 @@ const Product = ({ id, offer }) => {
         // if click on product it will link to the offer page
         <Link to={`/offer/${id}`}>
             <div className="product">
-                <div>
+                <div className="product-owner">
                     {offer.owner.account.avatar && (
-                        <span className="user-avatar">
+                        <span className="product-owner-avatar">
                             <img
                                 src={offer.owner.account.avatar.secure_url}
                                 alt=""
@@ -22,10 +22,11 @@ const Product = ({ id, offer }) => {
                     <img src={offer.product_image.secure_url} alt="" />
                 </span>
 
-                <div>
-                    <span>{offer.product_price}</span>
-                    <span>{offer.product_details.TAILLE}</span>
-                    <span>{offer.product_details.MARQUE}</span>
+                <div className="product-details">
+                    <span>{offer.product_price} €</span>
+
+                    <span>{offer.product_details[1].TAILLE}</span>
+                    <span>{offer.product_details[0].MARQUE}</span>
                 </div>
             </div>
         </Link>

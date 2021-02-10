@@ -22,6 +22,7 @@
 }
 .Header img {
     height: 40px;
+    cursor: pointer;
 }
 .Header button {
     height: 30px;
@@ -47,15 +48,22 @@
        Home
 ======================= */
 
-.Home img {
+/* background image */
+.home-bg {
+    background-image: url(./assets/images/hero.jpg);
     height: 455px;
     width: 100%;
     position: relative;
-    object-fit: cover;
-    object-position: center;
+    background-position: 50%;
+    background-size: cover;
 }
-
+.home-bg > div {
+    width: 1280px;
+    height: 0;
+    margin: auto;
+}
 .home-txt {
+    box-sizing: initial;
     height: 220px;
     width: 360px;
     background: white;
@@ -81,13 +89,19 @@
     padding: 0 14px;
     margin-top: 32px;
 }
+.home-tear {
+    position: absolute;
+    bottom: 0;
+}
 
-.user-avatar img {
-    height: 40px;
-    width: 40px;
-    object-position: center;
+/* products */
+.product-owner-avatar img {
+    height: 25px;
+    width: 25px;
     object-fit: cover;
+    object-position: center;
     border-radius: 50%;
+    margin-right: 10px;
 }
 .product-img img {
     width: 235px;
@@ -101,4 +115,10 @@
 }
 .product {
     margin: 10px, 20px;
+}
+.product-details {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: grey;
 }

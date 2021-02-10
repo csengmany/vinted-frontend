@@ -20,8 +20,8 @@ function App() {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    "https://lereacteur-vinted-api.herokuapp.com/offers"
-                    // "https://vinted-api-backend.herokuapp.com/offers"
+                    // "https://lereacteur-vinted-api.herokuapp.com/offers"
+                    "https://vinted-api-backend.herokuapp.com/offers"
                 );
                 console.log(response.data);
                 setData(response.data);
@@ -39,11 +39,8 @@ function App() {
         <Router>
             <Header />
             <Switch>
-                {/* <Route path="/offers">
-                    <Offers />
-                </Route> */}
                 <Route path="/offer/:id">
-                    <Offer />
+                    <Offer data={data.offers} />
                 </Route>
                 <Route path="/">
                     <Home data={data} />
