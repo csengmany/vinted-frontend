@@ -129,6 +129,7 @@
 }
 .product-owner > span {
     color: var(--grey);
+    height: 25px;
 }
 .product-owner-avatar img {
     height: 25px;
@@ -188,8 +189,7 @@
     height: 605px;
     width: 450px;
 }
-.offer-details > div {
-}
+
 .offer-details > div > span:not(:nth-child(2n)) {
     color: var(--grey);
     margin-right: 10px;

@@ -23,13 +23,18 @@ function App() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [userToken, setUserToken] = useState();
+
     const setUser = (token) => {
         if (token) {
-            // Créer un cookie
-            Cookies.set("userToken", token, { expires: 1 }); //expire dans un jour
-            // Mettre à jour userToken
+            // Create a cookie name userToken
+            Cookies.set("userToken", token, { expires: 1 }); //expire in one day
+            // update userToken
             setUserToken(token);
         } else {
+            //delete cookie when user is disconnect
+            Cookies.remove("userToken");
+            //update
+            setUserToken(null);
         }
     };
     //useEffect to update data une seule fois:  au chargement du composant
@@ -38,8 +43,8 @@ function App() {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    "https://lereacteur-vinted-api.herokuapp.com/offers"
-                    // "https://vinted-api-backend.herokuapp.com/offers"
+                    // "https://lereacteur-vinted-api.herokuapp.com/offers"
+                    "https://vinted-api-backend.herokuapp.com/offers"
                 );
                 console.log(response.data);
                 setData(response.data);
