@@ -13,45 +13,55 @@
 }
 
 /* ====================
-       HEADER
+       header
 ======================= */
-.Header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header-container {
+    width: 100vw;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    border: 1px solid var(--bg);
+}
+.header {
     width: 1280px;
     margin: auto;
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.Header img {
+.header img {
     height: 40px;
     cursor: pointer;
 }
-.Header > div {
+.header > div {
     display: flex;
 }
-.Header > div span {
+.header > div span {
     height: 30px;
     width: 115px;
 
-    border: 1px solid #2cb1ba;
-    border-radius: 5px;
-    background: white;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #2cb1ba;
+    border-radius: 5px;
+    background: white;
+
+    cursor: pointer;
 }
-.Header div a {
+.header div a {
     font-family: "Font-Med";
     text-decoration: none;
     color: var(--primary);
     font-size: 12px;
 }
-.Header > div span:first-child {
+.header > div span:first-child {
     margin-right: 20px;
 }
-.Header > button {
+
+.primary-btn {
     height: 30px;
     width: 115px;
     color: white;
@@ -63,7 +73,40 @@
     cursor: pointer;
     font-family: "Font-Med";
 }
-
+.red-btn {
+    height: 30px;
+    width: 115px;
+    color: white;
+    background: #c2175b;
+    border: 1px solid #c2175b;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Font-Med";
+}
+.header input {
+    width: 630px;
+    height: 40px;
+    padding-left: 40px;
+    background-color: #f5f6f7;
+    border-radius: 5px;
+    height: 37px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.search-container {
+    position: relative;
+}
+.search-icon-div {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.search-icon {
+    color: var(--grey);
+}
 /* ====================
        Home
 ======================= */
@@ -79,7 +122,6 @@
 }
 .home-bg > div {
     width: 1280px;
-    height: 0;
     margin: auto;
 }
 .home-txt {
