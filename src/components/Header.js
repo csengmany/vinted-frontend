@@ -1,7 +1,7 @@
 import logo from "../assets/images/logo-vinted.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-const Header = (userToken) => {
+const Header = ({ userToken, setUser }) => {
     return (
         <div className="Header">
             <div>
@@ -13,6 +13,14 @@ const Header = (userToken) => {
             </div>
 
             {userToken ? (
+                <button
+                    onClick={() => {
+                        setUser(null);
+                    }}
+                >
+                    Se déconnecter
+                </button>
+            ) : (
                 <div>
                     <span>
                         <Link className="header-btn" to={"/signup"}>
@@ -25,8 +33,6 @@ const Header = (userToken) => {
                         </Link>
                     </span>
                 </div>
-            ) : (
-                <button>Se déconnecter</button>
             )}
 
             <button>Vends tes articles</button>

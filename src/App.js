@@ -22,18 +22,18 @@ library.add(faSearch);
 function App() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [userToken, setUserToken] = useState();
+    const [userToken, setUserToken] = useState(Cookies.get("userToken") || "");
 
     const setUser = (token) => {
         if (token) {
             // Create a cookie name userToken
-            Cookies.set("userToken", token, { expires: 1 }); //expire in one day
+            Cookies.set("userToken", token, { expires: 7 }); //expire in one day
             // update userToken
             setUserToken(token);
         } else {
             //delete cookie when user is disconnect
             Cookies.remove("userToken");
-            //update
+            //update userToken
             setUserToken(null);
         }
     };
