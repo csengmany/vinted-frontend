@@ -214,3 +214,43 @@
     line-height: 36px;
     margin-top: 32px;
 }
+
+/* ====================
+       SIGNUP
+======================= */
+h2 {
+    font-size: 24px;
+}
+.sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 450px;
+    width: 300px;
+    margin: 0 auto;
+}
+.sign-up form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-up form input {
+    border: none;
+    border-bottom: 1px solid red;
+    outline: none;
+    padding: 10px;
+    width: 300px;
+}
+.sign-up form div {
+    display: flex;
+    width: 300px;
+}
+
+.sign-up form div input {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-left: 0;
+}

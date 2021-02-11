@@ -14,10 +14,14 @@ const Header = () => {
 
             <div>
                 <span>
-                    <Link className="header-btn">S'inscrire</Link>
+                    <Link className="header-btn" to={"/signup"}>
+                        S'inscrire
+                    </Link>
                 </span>
                 <span>
-                    <Link className="header-btn">Se connecter</Link>
+                    <Link className="header-btn" to={"/login"}>
+                        Se connecter
+                    </Link>
                 </span>
             </div>
 

@@ -2,17 +2,18 @@ import "./App.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//Import fontawesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+//Import components
+import Header from "./components/Header";
 //Import containers
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
-//Import components
-import Header from "./components/Header";
+import SignUp from "./containers/SignUp";
+import Login from "./containers/Login";
 
-//import fontawesome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 function App() {
@@ -44,6 +45,12 @@ function App() {
         <Router>
             <Header />
             <Switch>
+                <Route path="/signup">
+                    <SignUp />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />
                 </Route>
