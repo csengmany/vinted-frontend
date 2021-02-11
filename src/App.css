@@ -214,8 +214,10 @@
 /* ====================
        Offer
 ======================= */
-.Offer {
+.offer {
     background: var(--bg);
+    width: 100vw;
+    height: 100vh;
 }
 .offer-container {
     width: 1280px;
@@ -230,9 +232,10 @@
     height: 605px;
     width: 450px;
     background: white;
+    padding: 40px;
 }
 
-.Offer img {
+.offer img {
     height: 605px;
     width: 450px;
 }
@@ -249,6 +252,11 @@
     border-radius: 50%;
     margin-right: 10px;
 }
+.offer-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .offer-infos button {
     color: #fff;
     background: var(--primary);
@@ -262,6 +270,45 @@
     margin-top: 32px;
 }
 
+.offer-infos > span {
+    font-size: 24px;
+}
+.offer-infos li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.offer-infos li:first-child {
+    margin-top: 20px;
+}
+li > div span:first-child {
+    color: var(--grey);
+}
+li > div {
+    display: flex;
+    justify-content: space-between;
+}
+.separator {
+    height: 1px;
+    display: block;
+    width: 100%;
+    margin: 50px auto;
+    border-bottom: var(--bg) 1px solid;
+}
+h3 {
+    font-size: 16px;
+    font-family: "Font-Med";
+    margin-bottom: 15px;
+}
+.offer-infos > span:not(:first-child) {
+    color: var(--grey);
+    font-size: 16px;
+}
+.offer-owner {
+    display: flex;
+    align-items: center;
+    margin: 15px 0 40px;
+}
 /* ====================
        SIGNUP
 ======================= */

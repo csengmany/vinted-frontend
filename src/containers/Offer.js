@@ -31,7 +31,7 @@ const Offer = () => {
     return isLoading ? (
         <span>En cours de chargement...</span>
     ) : (
-        <div className="Offer">
+        <div className="offer">
             <div className="offer-container">
                 <img
                     src={data.product_image.secure_url}
@@ -44,14 +44,16 @@ const Offer = () => {
                             const keys = Object.keys(elem);
                             return (
                                 <li>
-                                    <span>{keys[0]}</span>
-                                    <span>{elem[keys[0]]}</span>
+                                    <div>
+                                        <span>{keys[0]}</span>{" "}
+                                        <span>{elem[keys[0]]}</span>
+                                    </div>
                                 </li>
                             );
                         })}
                     </div>
                     <div className="separator"></div>
-                    <h2>{data.product_name}</h2>
+                    <h3>{data.product_name}</h3>
                     <span>{data.product_description}</span>
                     <div className="offer-owner">
                         <img
@@ -63,7 +65,6 @@ const Offer = () => {
                     <button>Acheter</button>
                 </div>
             </div>
-            <Link to={"/"}>Go to Home</Link>
         </div>
     );
 };
