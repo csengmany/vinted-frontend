@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Offer = () => {
-    const id = useParams();
-    console.log(id);
-
+    // const  id  = useParams(); //object{id:667898080} et donc il faudra faire un id.id
+    const { id } = useParams(); // 667898080
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +16,7 @@ const Offer = () => {
             try {
                 const response = await axios.get(
                     //`https://lereacteur-vinted-api.herokuapp.com/offer/${id.id}`
-                    `https://vinted-api-backend.herokuapp.com/offer/${id.id}`
+                    `https://vinted-api-backend.herokuapp.com/offer/${id}`
                 );
                 console.log(response.data);
                 setData(response.data);
@@ -27,7 +26,7 @@ const Offer = () => {
             }
         };
         fetchDta();
-    }, []);
+    }, [id]);
 
     return isLoading ? (
         <span>En cours de chargement...</span>
@@ -36,28 +35,17 @@ const Offer = () => {
             <div className="offer-container">
                 <img src={data.product_image.secure_url} alt="" />
                 <div className="offer-infos">
-                    <span>{Number(data.product_price).toFixed(2)} €</span>
+                    <span>{Number(data.product_price)} €</span>
                     <div className="offer-details">
-                        <div>
-                            <span>MARQUE</span>
-                            <span>{data.product_details[0].MARQUE}</span>
-                        </div>
-                        <div>
-                            <span>TAILLE</span>
-                            <span>{data.product_details[1].TAILLE}</span>
-                        </div>
-                        <div>
-                            <span>ÉTAT</span>
-                            <span>{data.product_details[2].ÉTAT}</span>
-                        </div>
-                        <div>
-                            <span>COULEUR</span>
-                            <span>{data.product_details[3].COULEUR}</span>
-                        </div>
-                        <div>
-                            <span>EMPLACEMENT</span>
-                            <span>{data.product_details[4].EMPLACEMENT}</span>
-                        </div>
+                        {data.product_details.map((elem, index) => {
+                            const keys = Object.keys(elem);
+                            return (
+                                <li>
+                                    <span>{keys[0]}</span>
+                                    <span>{elem[keys[0]]}</span>
+                                </li>
+                            );
+                        })}
                     </div>
                     <div className="separator"></div>
                     <h2>{data.product_name}</h2>

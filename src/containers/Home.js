@@ -11,13 +11,13 @@ const Home = ({ data }) => {
                         <span>Prêts à faire du tri dans vos placards ?</span>
                         <button>Commencer à vendre</button>
                     </div>
-                    <img src={tear} alt="tear" class="home-tear"></img>
+                    <img src={tear} alt="tear" className="home-tear"></img>
                 </div>
             </div>
 
             <div className="products">
                 {data.offers.map((offer, index) => {
-                    console.log(offer._id);
+                    // console.log(offer._id);
                     return (
                         <Product key={offer._id} offer={offer} id={offer._id} />
                     );

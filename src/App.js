@@ -10,6 +10,11 @@ import Offer from "./containers/Offer";
 //Import components
 import Header from "./components/Header";
 
+//import fontawesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch);
+
 function App() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

@@ -27,25 +27,43 @@
     height: 40px;
     cursor: pointer;
 }
-.Header button {
+.Header > div {
+    display: flex;
+}
+.Header > div span {
     height: 30px;
     width: 115px;
+
+    border: 1px solid #2cb1ba;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header div a {
+    font-family: "Font-Med";
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 12px;
+}
+.Header > div span:first-child {
+    margin-right: 20px;
+}
+.Header > button {
+    height: 30px;
+    width: 115px;
+    color: white;
+    background: var(--primary);
     border: 1px solid #2cb1ba;
     border-radius: 5px;
     font-size: 12px;
     outline: none;
-    color: var(--primary);
-    background: white;
     cursor: pointer;
     font-family: "Font-Med";
 }
-.Header div button:first-child {
-    margin-right: 20px;
-}
-.Header > button {
-    color: white;
-    background: var(--primary);
-}
+
 /* ====================
        Home
 ======================= */
