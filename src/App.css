@@ -10,6 +10,7 @@
 * {
     box-sizing: border-box;
     font-family: "Font";
+    font-size: 16px;
 }
 
 /* ====================
@@ -266,6 +267,7 @@
 ======================= */
 h2 {
     font-size: 24px;
+    margin-bottom: 20px;
 }
 .sign-up {
     display: flex;
@@ -284,10 +286,16 @@ h2 {
 }
 .sign-up form input {
     border: none;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #fcced2;
     outline: none;
     padding: 10px;
     width: 300px;
+    margin-bottom: 20px;
+}
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(170, 170, 170);
+    opacity: 1; /* Firefox */
 }
 .sign-up form div {
     display: flex;

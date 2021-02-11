@@ -10,7 +10,7 @@ const Product = ({ id, offer }) => {
                     <span className="product-owner-avatar">
                         <img
                             src={offer.owner.account.avatar.secure_url}
-                            alt=""
+                            alt={`avatar_` + offer.owner.account.username}
                         />
                     </span>
                 )}
@@ -20,7 +20,10 @@ const Product = ({ id, offer }) => {
 
             <Link to={`/offer/${id}`} className="product-link">
                 <span className="product-img">
-                    <img src={offer.product_image.secure_url} alt="" />
+                    <img
+                        src={offer.product_image.secure_url}
+                        alt={offer.product_name}
+                    />
                 </span>
                 <div className="product-details">
                     <span>{offer.product_price} €</span>
