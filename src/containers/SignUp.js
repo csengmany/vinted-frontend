@@ -5,9 +5,11 @@ const SignUp = () => {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [newsletter, setNewsletter] = useState();
     const handleSubmit = (event) => {
         event.preventDefault();
     };
+
     return (
         <div className="sign-up">
             <h2>S'inscrire</h2>
@@ -15,16 +17,36 @@ const SignUp = () => {
                 <input
                     type="text"
                     value={userName}
+                    onChange={(event) => {
+                        setUserName(event.target.value);
+                    }}
                     placeholder="Nom d'utilisateur"
                 />
-                <input type="email" value={email} placeholder="Email" />
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => {
+                        setEmail(event.target.value);
+                    }}
+                    placeholder="Email"
+                />
                 <input
                     type="password"
                     value={password}
+                    onChange={(event) => {
+                        setPassword(event.target.value);
+                    }}
                     placeholder="Mot de passe"
                 />
                 <div>
-                    <input type="checkbox" className="sign-up-checkbox" />
+                    <input
+                        type="checkbox"
+                        checked={newsletter}
+                        onChange={() => {
+                            setNewsletter(!newsletter);
+                        }}
+                        className="sign-up-checkbox"
+                    />
                     <span>S'inscrire à notre newsletter</span>
                 </div>
                 <p>
