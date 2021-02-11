@@ -1,13 +1,33 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
-    const [userName, setUserName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [avatar, setAvatar] = useState(null);
     const [password, setPassword] = useState("");
     const [newsletter, setNewsletter] = useState();
-    const handleSubmit = (event) => {
-        event.preventDefault();
+
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            const response = await axios.post(
+                "https://vinted-api-backend.herokuapp.com/user/signup",
+                {
+                    email: email,
+                    username: username,
+                    phone: phone,
+                    password: password,
+                    avatar: avatar,
+                }
+            );
+            console.log(response.data);
+        } catch (error) {
+            alert(error.message);
+            console.log(error.message);
+        }
     };
 
     return (
@@ -16,9 +36,9 @@ const SignUp = () => {
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={userName}
+                    value={username}
                     onChange={(event) => {
-                        setUserName(event.target.value);
+                        setUsername(event.target.value);
                     }}
                     placeholder="Nom d'utilisateur"
                 />
@@ -31,12 +51,28 @@ const SignUp = () => {
                     placeholder="Email"
                 />
                 <input
+                    type="text"
+                    value={phone}
+                    onChange={(event) => {
+                        setPhone(event.target.value);
+                    }}
+                    placeholder="Téléphone"
+                />
+                <input
                     type="password"
                     value={password}
                     onChange={(event) => {
                         setPassword(event.target.value);
                     }}
                     placeholder="Mot de passe"
+                />
+                <input
+                    type="file"
+                    className="avatar"
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={(event) => {
+                        setAvatar(event.target.file);
+                    }}
                 />
                 <div>
                     <input
