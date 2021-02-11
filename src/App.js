@@ -14,20 +14,32 @@ import Offer from "./containers/Offer";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
 
+//Import cookies
+import Cookies from "js-cookie";
+
 library.add(faSearch);
 
 function App() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    const [userToken, setUserToken] = useState();
+    const setUser = (token) => {
+        if (token) {
+            // Créer un cookie
+            Cookies.set("userToken", token, { expires: 1 }); //expire dans un jour
+            // Mettre à jour userToken
+            setUserToken(token);
+        } else {
+        }
+    };
     //useEffect to update data une seule fois:  au chargement du composant
     useEffect(() => {
         //axios requet
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    // "https://lereacteur-vinted-api.herokuapp.com/offers"
-                    "https://vinted-api-backend.herokuapp.com/offers"
+                    "https://lereacteur-vinted-api.herokuapp.com/offers"
+                    // "https://vinted-api-backend.herokuapp.com/offers"
                 );
                 console.log(response.data);
                 setData(response.data);
@@ -43,13 +55,13 @@ function App() {
         <span>En cours de chargement...</span>
     ) : (
         <Router>
-            <Header />
+            <Header userToken={userToken} setUser={setUser} />
             <Switch>
                 <Route path="/signup">
-                    <SignUp />
+                    <SignUp userToken={userToken} setUser={setUser} />
                 </Route>
                 <Route path="/login">
-                    <Login />
+                    <Login userToken={userToken} setUser={setUser} />
                 </Route>
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />

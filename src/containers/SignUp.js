@@ -1,29 +1,36 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [avatar, setAvatar] = useState(null);
+    // const [avatar, setAvatar] = useState("");
     const [password, setPassword] = useState("");
     const [newsletter, setNewsletter] = useState();
+    //Navigate go to homepage
+    const history = useHistory();
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
             const response = await axios.post(
                 "https://vinted-api-backend.herokuapp.com/user/signup",
+                //"https://lereacteur-vinted-api.herokuapp.com/user/signup",
                 {
                     email: email,
                     username: username,
                     phone: phone,
                     password: password,
-                    avatar: avatar,
+                    // avatar: avatar,
                 }
             );
-            console.log(response.data);
+            console.log(response.data.token);
+            if (response.data.token) {
+                setUser(response.data.token);
+                history.push("/");
+            }
         } catch (error) {
             alert(error.message);
             console.log(error.message);
@@ -66,14 +73,14 @@ const SignUp = () => {
                     }}
                     placeholder="Mot de passe"
                 />
-                <input
+                {/* <input
                     type="file"
                     className="avatar"
                     accept="image/png, image/jpeg, image/jpg"
                     onChange={(event) => {
-                        setAvatar(event.target.file);
+                        setAvatar(event.target.files);
                     }}
-                />
+                /> */}
                 <div>
                     <input
                         type="checkbox"
