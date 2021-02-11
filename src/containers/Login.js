@@ -24,9 +24,9 @@ const Login = ({ setUser }) => {
         }
     };
     return (
-        <div className="Login">
+        <div className="login">
             <h2>Se connecter</h2>
-            <form className="sign-up-form" onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleSubmit}>
                 <input
                     type="email"
                     value={email}

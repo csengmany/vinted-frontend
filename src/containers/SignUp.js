@@ -81,15 +81,14 @@ const SignUp = ({ setUser }) => {
                         setAvatar(event.target.files);
                     }}
                 /> */}
-                <div>
+                <div className="sign-up-checkbox">
                     <input
                         type="checkbox"
                         checked={newsletter}
                         onChange={() => {
                             setNewsletter(!newsletter);
                         }}
-                        className="sign-up-checkbox"
-                    />
+                    ></input>
                     <span>S'inscrire à notre newsletter</span>
                 </div>
                 <p>
