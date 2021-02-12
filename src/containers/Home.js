@@ -9,14 +9,22 @@ const Home = ({ data }) => {
                 <div>
                     <div className="home-txt">
                         <span>Prêts à faire du tri dans vos placards ?</span>
-                        <button>Commencer à vendre</button>
+                        <button
+                            onClick={() =>
+                                alert("click sur commencer à vendre")
+                            }
+                        >
+                            Commencer à vendre
+                        </button>
                     </div>
                     <img src={tear} alt="tear" className="home-tear"></img>
                 </div>
             </div>
-
+            <div>
+                <button>Toutes les offres</button>
+            </div>
             <div className="products">
-                {data.offers.map((offer, index) => {
+                {data.offers.slice(0, 10).map((offer, index) => {
                     // console.log(offer._id);
                     return (
                         <Product key={offer._id} offer={offer} id={offer._id} />

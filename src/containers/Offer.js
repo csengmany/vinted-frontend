@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
@@ -43,7 +43,7 @@ const Offer = () => {
                         {data.product_details.map((elem, index) => {
                             const keys = Object.keys(elem);
                             return (
-                                <li>
+                                <li key={index}>
                                     <div>
                                         <span>{keys[0]}</span>{" "}
                                         <span>{elem[keys[0]]}</span>
@@ -62,7 +62,13 @@ const Offer = () => {
                         />
                         <span>{data.owner.account.username}</span>
                     </div>
-                    <button>Acheter</button>
+                    <button
+                        onClick={() => {
+                            alert("click sur acheter");
+                        }}
+                    >
+                        Acheter
+                    </button>
                 </div>
             </div>
         </div>

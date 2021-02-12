@@ -32,6 +32,7 @@ const Header = ({ userToken, setUser }) => {
                             className="red-btn"
                             onClick={() => {
                                 setUser(null);
+                                history.push("/");
                             }}
                         >
                             Se déconnecter
@@ -52,7 +53,12 @@ const Header = ({ userToken, setUser }) => {
                     </div>
                 )}
 
-                <button className="primary-btn">Vends tes articles</button>
+                <button
+                    className="primary-btn"
+                    onClick={() => alert("click sur vends tes articles")}
+                >
+                    Vends tes articles
+                </button>
             </div>
         </div>
     );

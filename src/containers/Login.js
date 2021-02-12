@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 const Login = ({ setUser }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const history = useHistory();
     const handleSubmit = async (event) => {
         try {
@@ -19,8 +20,11 @@ const Login = ({ setUser }) => {
                 history.push("/");
             }
         } catch (error) {
-            alert(error.message);
             console.log(error.message);
+            setErrorMessage("Something went error, please try again");
+            if (error.message) {
+                console.log(error.response.message);
+            }
         }
     };
     return (
@@ -44,6 +48,7 @@ const Login = ({ setUser }) => {
                     placeholder="Mot de passe"
                 />
                 <button>Se connecter</button>
+                <span style={{ color: "red" }}>{errorMessage}</span>
             </form>
             <span>
                 <Link to={"/signup"}>
