@@ -21,35 +21,15 @@ const Home = ({ data, search }) => {
                 </div>
             </div>
             <div>
-                <Link to="/offers?">Toutes les offres</Link>
+                <Link to="/offers">Toutes les offres</Link>
             </div>
             <div className="products">
-                {!search
-                    ? data.offers.slice(0, 10).map((offer, index) => {
-                          // console.log(offer._id);
-                          return (
-                              <Product
-                                  key={offer._id}
-                                  offer={offer}
-                                  id={offer._id}
-                              />
-                          );
-                      })
-                    : data.offers.map((offer, index) => {
-                          if (
-                              offer.product_name
-                                  .toLowerCase()
-                                  .indexOf(search.toLowerCase()) !== -1
-                          ) {
-                              return (
-                                  <Product
-                                      key={offer._id}
-                                      offer={offer}
-                                      id={offer._id}
-                                  />
-                              );
-                          }
-                      })}
+                {data.offers.slice(0, 10).map((offer, index) => {
+                    // console.log(offer._id);
+                    return (
+                        <Product key={offer._id} offer={offer} id={offer._id} />
+                    );
+                })}
             </div>
         </div>
     );

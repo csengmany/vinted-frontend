@@ -27,9 +27,12 @@ function App() {
 
     //state to set query params to limit number of offers and change the page
     const [page, setPage] = useState();
-    const [limit, setLimit] = useState();
+    const [limit, setLimit] = useState(5);
     // state to search an offer by name
     const [search, setSearch] = useState("");
+
+    const [sortPrice, setSortPrice] = useState(false);
+    const [range, setRange] = useState([0, 10000]);
 
     const setUser = (token) => {
         if (token) {
@@ -51,7 +54,7 @@ function App() {
             try {
                 const response = await axios.get(
                     // "https://lereacteur-vinted-api.herokuapp.com/offers"
-                    "https://vinted-api-backend.herokuapp.com/offers"
+                    `https://vinted-api-backend.herokuapp.com/offers?title=${search}`
                 );
                 // console.log(response.data);
                 setData(response.data);
@@ -61,7 +64,7 @@ function App() {
             }
         };
         fetchDta();
-    }, []);
+    }, [search]);
 
     return isLoading ? (
         <span>En cours de chargement...</span>
@@ -72,6 +75,10 @@ function App() {
                 setUser={setUser}
                 search={search}
                 setSearch={setSearch}
+                range={range}
+                setRange={setRange}
+                sortPrice={sortPrice}
+                setSortPrice={setSortPrice}
             />
             <Switch>
                 <Route path="/signup">
@@ -83,7 +90,7 @@ function App() {
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />
                 </Route>
-                <Route path={"/offers"}>
+                <Route path="/offers">
                     <Offers
                         data={data}
                         page={page}
@@ -92,7 +99,7 @@ function App() {
                         setLimit={setLimit}
                     />
                 </Route>
-                <Route path={`/offers?${page}&${limit}`}>
+                {/* <Route path={`/offers?${page}&${limit}`}>
                     <Offers
                         data={data}
                         page={page}
@@ -100,7 +107,7 @@ function App() {
                         limit={limit}
                         setLimit={setLimit}
                     />
-                </Route>
+                </Route> */}
                 <Route path="/">
                     <Home data={data} search={search} />
                 </Route>

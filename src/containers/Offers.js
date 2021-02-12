@@ -1,33 +1,24 @@
 import Product from "../components/Product";
+
 const Offers = ({ data, page, setPage, limit, setLimit }) => {
-    console.log("limit", limit, "page", page);
-    const displayLimitOffers = (event) => {
-        console.log(limit);
-
-        setLimit(5);
-    };
+    console.log(limit);
     return (
-        <div className="offers" onSubmit={displayLimitOffers}>
-            <form action="/offers">
-                <label>Nombre d'articles:</label>
-                <select name="limit" id="limit">
-                    <optgroup label="Nombre d'articles">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                    </optgroup>
+        <div className="offers" onSubmit={() => {}}>
+            <form action="">
+                <select
+                    name="limit"
+                    id=""
+                    onChange={(event) => {
+                        setLimit(event.target.value);
+                    }}
+                >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
                 </select>
-
-                <input type="submit" value="Submit" />
             </form>
-            <form action="/offers">
-                <label>Page:</label>
-                <select name="page" id="page">
-                    <option value="5">1</option>
-                    <option value="10">2</option>
-                </select>
 
-                <input type="submit" value="Submit" />
-            </form>
             <div className="products">
                 {!limit
                     ? data.offers.map((offer, index) => {
