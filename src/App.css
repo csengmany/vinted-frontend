@@ -108,6 +108,30 @@
 .search-icon {
     color: var(--grey);
 }
+.filter-container {
+    display: flex;
+    flex-direction: column;
+}
+.filter-price {
+    display: flex;
+}
+.filter-price > span:first-child {
+    border: none;
+    margin-right: 0;
+    width: 180px;
+    cursor: inherit;
+}
+.filter-price > span:last-child {
+    border: none;
+    margin-left: 0;
+    width: 30px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+}
+
 /* ====================
        Home
 ======================= */

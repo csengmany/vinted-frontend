@@ -30,8 +30,10 @@ function App() {
     const [limit, setLimit] = useState(5);
     // state to search an offer by name
     const [search, setSearch] = useState("");
-
+    // state to order price
     const [sortPrice, setSortPrice] = useState(false);
+
+    //state to set range of price
     const [range, setRange] = useState([0, 10000]);
 
     const setUser = (token) => {
@@ -54,7 +56,9 @@ function App() {
             try {
                 const response = await axios.get(
                     // "https://lereacteur-vinted-api.herokuapp.com/offers"
-                    `https://vinted-api-backend.herokuapp.com/offers?title=${search}`
+                    `https://vinted-api-backend.herokuapp.com/offers?title=${search}&sort=${
+                        sortPrice ? "price-desc" : "price-asc"
+                    }`
                 );
                 // console.log(response.data);
                 setData(response.data);
@@ -64,7 +68,7 @@ function App() {
             }
         };
         fetchDta();
-    }, [search]);
+    }, [search, sortPrice]);
 
     return isLoading ? (
         <span>En cours de chargement...</span>

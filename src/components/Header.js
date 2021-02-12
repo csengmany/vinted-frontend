@@ -1,7 +1,16 @@
 import logo from "../assets/images/logo-vinted.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useHistory } from "react-router-dom";
-const Header = ({ userToken, setUser, search, setSearch }) => {
+const Header = ({
+    userToken,
+    setUser,
+    search,
+    setSearch,
+    range,
+    setRange,
+    sortPrice,
+    setSortPrice,
+}) => {
     const history = useHistory();
 
     return (
@@ -16,21 +25,37 @@ const Header = ({ userToken, setUser, search, setSearch }) => {
                         }}
                     />
                 </div>
-                <div className="search-container">
-                    <div className="search-icon-div">
-                        <FontAwesomeIcon
-                            icon="search"
-                            className="search-icon"
+
+                <div className="filter-container">
+                    <div className="search-container">
+                        <div className="search-icon-div">
+                            <FontAwesomeIcon
+                                icon="search"
+                                className="search-icon"
+                            />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Rechercher des articles"
+                            value={search}
+                            onChange={(event) => {
+                                setSearch(event.target.value);
+                            }}
                         />
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Rechercher des articles"
-                        value={search}
-                        onChange={(event) => {
-                            setSearch(event.target.value);
-                        }}
-                    />
+
+                    <div className="filter-price">
+                        <span>Trier par prix : décroissant</span>
+                        <span className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="price"
+                                onChange={() => {
+                                    setSortPrice(!sortPrice);
+                                }}
+                            />
+                        </span>
+                    </div>
                 </div>
 
                 {userToken ? (
