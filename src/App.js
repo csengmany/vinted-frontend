@@ -16,6 +16,7 @@ import Login from "./containers/Login";
 
 //Import cookies
 import Cookies from "js-cookie";
+import Offers from "./containers/Offers";
 
 library.add(faSearch);
 
@@ -23,6 +24,10 @@ function App() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [userToken, setUserToken] = useState(Cookies.get("userToken") || "");
+
+    //state to set query params to limit number of offers and change the page
+    const [page, setPage] = useState();
+    const [limit, setLimit] = useState();
 
     const setUser = (token) => {
         if (token) {
@@ -46,7 +51,7 @@ function App() {
                     // "https://lereacteur-vinted-api.herokuapp.com/offers"
                     "https://vinted-api-backend.herokuapp.com/offers"
                 );
-                console.log(response.data);
+                // console.log(response.data);
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -70,6 +75,24 @@ function App() {
                 </Route>
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />
+                </Route>
+                <Route path={"/offers"}>
+                    <Offers
+                        data={data}
+                        page={page}
+                        setPage={setPage}
+                        limit={limit}
+                        setLimit={setLimit}
+                    />
+                </Route>
+                <Route path={`/offers?${page}&${limit}`}>
+                    <Offers
+                        data={data}
+                        page={page}
+                        setPage={setPage}
+                        limit={limit}
+                        setLimit={setLimit}
+                    />
                 </Route>
                 <Route path="/">
                     <Home data={data} />

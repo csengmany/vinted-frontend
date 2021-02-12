@@ -21,7 +21,7 @@ const Home = ({ data }) => {
                 </div>
             </div>
             <div>
-                <button>Toutes les offres</button>
+                <Link to="/offers?">Toutes les offres</Link>
             </div>
             <div className="products">
                 {data.offers.slice(0, 10).map((offer, index) => {
@@ -31,8 +31,6 @@ const Home = ({ data }) => {
                     );
                 })}
             </div>
-
-            <Link to={`/offer/`}>Go to offers</Link>
         </div>
     );
 };
