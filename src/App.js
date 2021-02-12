@@ -28,6 +28,8 @@ function App() {
     //state to set query params to limit number of offers and change the page
     const [page, setPage] = useState();
     const [limit, setLimit] = useState();
+    // state to search an offer by name
+    const [search, setSearch] = useState("");
 
     const setUser = (token) => {
         if (token) {
@@ -65,7 +67,12 @@ function App() {
         <span>En cours de chargement...</span>
     ) : (
         <Router>
-            <Header userToken={userToken} setUser={setUser} />
+            <Header
+                userToken={userToken}
+                setUser={setUser}
+                search={search}
+                setSearch={setSearch}
+            />
             <Switch>
                 <Route path="/signup">
                     <SignUp userToken={userToken} setUser={setUser} />
@@ -95,7 +102,7 @@ function App() {
                     />
                 </Route>
                 <Route path="/">
-                    <Home data={data} />
+                    <Home data={data} search={search} />
                 </Route>
             </Switch>
         </Router>

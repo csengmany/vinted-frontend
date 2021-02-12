@@ -1,7 +1,7 @@
 import logo from "../assets/images/logo-vinted.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useHistory } from "react-router-dom";
-const Header = ({ userToken, setUser }) => {
+const Header = ({ userToken, setUser, search, setSearch }) => {
     const history = useHistory();
 
     return (
@@ -23,7 +23,14 @@ const Header = ({ userToken, setUser }) => {
                             className="search-icon"
                         />
                     </div>
-                    <input type="text" placeholder="Rechercher des articles" />
+                    <input
+                        type="text"
+                        placeholder="Rechercher des articles"
+                        value={search}
+                        onChange={(event) => {
+                            setSearch(event.target.value);
+                        }}
+                    />
                 </div>
 
                 {userToken ? (
