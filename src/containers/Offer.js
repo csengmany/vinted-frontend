@@ -56,10 +56,12 @@ const Offer = () => {
                     <h3>{data.product_name}</h3>
                     <span>{data.product_description}</span>
                     <div className="offer-owner">
-                        <img
-                            src={data.owner.account.avatar.secure_url}
-                            alt={`avatar_` + data.owner.account.username}
-                        />
+                        {data.owner.account.avatar && (
+                            <img
+                                src={data.owner.account.avatar.secure_url}
+                                alt={`avatar_` + data.owner.account.username}
+                            />
+                        )}
                         <span>{data.owner.account.username}</span>
                     </div>
                     <button
