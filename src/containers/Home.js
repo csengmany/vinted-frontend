@@ -1,16 +1,7 @@
 import Product from "../components/Product";
 import tear from "../assets/images/tear.42d6cec6.svg";
 
-const Home = ({
-    data,
-    search,
-    limit,
-    setLimit,
-    page,
-    setPage,
-    maxPage,
-    setMaxPage,
-}) => {
+const Home = ({ data, limit, setLimit, setPage, maxPage, setMaxPage }) => {
     return (
         <div className="Home">
             <div className="home-bg">

@@ -46,16 +46,24 @@ const Header = ({
                     </div>
 
                     <div className="filter-price">
-                        <span>Trier par prix : décroissant</span>
-                        <span className="checkbox">
-                            <input
+                        <span>Trier par prix : </span>
+                        {/* <span className="checkbox"> */}
+                        {/* <input
                                 type="checkbox"
                                 name="price"
                                 onChange={() => {
                                     setSortPrice(!sortPrice);
                                 }}
-                            />
+                            /> */}
+                        <span
+                            className="sort"
+                            onClick={() => {
+                                setSortPrice(!sortPrice);
+                            }}
+                        >
+                            {sortPrice ? "⇣" : "⇡"}
                         </span>
+                        {/* </span> */}
                         <span>Prix entre :</span>
                         <PriceRange setRange={setRange} />
                     </div>

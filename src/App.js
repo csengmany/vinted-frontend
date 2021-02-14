@@ -13,7 +13,6 @@ import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
-import Offers from "./containers/Offers";
 
 //Import cookies
 import Cookies from "js-cookie";
@@ -80,6 +79,7 @@ function App() {
         fetchDta();
     }, [
         search,
+        setSearch,
         sortPrice,
         range,
         limit,
@@ -99,12 +99,9 @@ function App() {
                 setUser={setUser}
                 search={search}
                 setSearch={setSearch}
-                range={range}
                 setRange={setRange}
                 sortPrice={sortPrice}
                 setSortPrice={setSortPrice}
-                maxPage={maxPage}
-                setMaxPage={setMaxPage}
             />
 
             <Switch>
@@ -117,29 +114,10 @@ function App() {
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />
                 </Route>
-                <Route path="/offers">
-                    <Offers
-                        data={data}
-                        page={page}
-                        setPage={setPage}
-                        limit={limit}
-                        setLimit={setLimit}
-                    />
-                </Route>
-                {/* <Route path={`/offers?${page}&${limit}`}>
-                    <Offers
-                        data={data}
-                        page={page}
-                        setPage={setPage}
-                        limit={limit}
-                        setLimit={setLimit}
-                    />
-                </Route> */}
+
                 <Route path="/">
                     <Home
                         data={data}
-                        search={search}
-                        page={page}
                         setPage={setPage}
                         limit={limit}
                         setLimit={setLimit}
