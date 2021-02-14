@@ -11,7 +11,7 @@ import Header from "./components/Header";
 //Import containers
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
-import SignUp from "./containers/SignUp";
+import SignUp from "./components/SignUp";
 import Login from "./containers/Login";
 
 //Import cookies
@@ -34,7 +34,7 @@ function App() {
     const [maxPage, setMaxPage] = useState("");
     //state to set range of price
     const [range, setRange] = useState([0, 10000]);
-
+    const [displayModal, setDisplayModal] = useState("");
     const setUser = (token) => {
         if (token) {
             // Create a cookie name userToken
@@ -102,8 +102,16 @@ function App() {
                 setRange={setRange}
                 sortPrice={sortPrice}
                 setSortPrice={setSortPrice}
+                displayModal={displayModal}
+                setDisplayModal={setDisplayModal}
             />
-
+            <div className={`modal ${displayModal}`}>
+                <SignUp
+                    className="modal-container"
+                    setUser={setUser}
+                    setDisplayModal={setDisplayModal}
+                />
+            </div>
             <Switch>
                 <Route path="/signup">
                     <SignUp userToken={userToken} setUser={setUser} />

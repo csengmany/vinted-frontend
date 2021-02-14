@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, setDisplayModal }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -12,9 +12,12 @@ const SignUp = ({ setUser }) => {
     //Navigate go to homepage
     const history = useHistory();
 
+    //error message
+    const [errorMessage, setErrorMessage] = useState("");
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
+
             const response = await axios.post(
                 "https://vinted-api-backend.herokuapp.com/user/signup",
                 //"https://lereacteur-vinted-api.herokuapp.com/user/signup",
@@ -26,20 +29,38 @@ const SignUp = ({ setUser }) => {
                     // avatar: avatar,
                 }
             );
-            console.log(response.data.token);
+            console.log("token", response.data.token);
             if (response.data.token) {
+                setErrorMessage("");
                 setUser(response.data.token);
+                setDisplayModal("");
+                setUsername("");
+                setEmail("");
+                setPhone("");
+                setPassword("");
                 history.push("/");
             }
         } catch (error) {
-            alert(error.message);
-            console.log(error.message);
+            if (error.response) {
+                setErrorMessage(error.response.data.message);
+            }
+            console.log("error", error);
         }
     };
 
     return (
         <div className="sign-up">
+            <span
+                className="close"
+                onClick={() => {
+                    setDisplayModal("");
+                    setErrorMessage("");
+                }}
+            >
+                X
+            </span>
             <h2>S'inscrire</h2>
+
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -96,10 +117,22 @@ const SignUp = ({ setUser }) => {
                     &#38; Conditions et Politique de Confidentialité de Vinted.
                     Je confirme avoir au moins 18 ans.
                 </p>
+                {errorMessage && (
+                    <span style={{ color: "red", marginTop: "15px" }}>
+                        {errorMessage}
+                    </span>
+                )}
                 <button type="submit">S'inscrire </button>
             </form>
             <span>
-                <Link to={"/login"}>Tu as déjà un compte ? Connecte-toi !</Link>
+                <Link
+                    to={"/login"}
+                    onClick={() => {
+                        setDisplayModal("");
+                    }}
+                >
+                    Tu as déjà un compte ? Connecte-toi !
+                </Link>
             </span>
         </div>
     );

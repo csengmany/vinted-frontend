@@ -354,8 +354,9 @@ h3 {
 /* ====================
        SIGNUP
 ======================= */
+
 h2 {
-    margin-top: 65px;
+    margin-top: 20px;
     font-size: 24px;
     margin-bottom: 20px;
     font-family: "font";
@@ -366,11 +367,26 @@ h2 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 450px;
+    height: 300px;
     width: 300px;
     margin: 0 auto;
     font-family: "font";
     font-size: 16px;
+}
+.sign-up {
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgb(17 17 17 / 24%);
+
+    width: max-content;
+    height: 540px;
+    padding: 10px 20px;
+    background: white;
+    position: relative;
+    margin: 70px auto;
+}
+.close {
+    position: absolute;
+    right: 20px;
 }
 .sign-up form,
 .login form {
@@ -437,4 +453,38 @@ h2 {
     font-size: 12px;
     text-decoration: none;
     color: var(--primary);
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.display {
+    display: flex;
 }

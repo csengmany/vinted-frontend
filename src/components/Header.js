@@ -11,6 +11,8 @@ const Header = ({
     setRange,
     sortPrice,
     setSortPrice,
+    displayModal,
+    setDisplayModal,
 }) => {
     const history = useHistory();
 
@@ -83,10 +85,18 @@ const Header = ({
                     </div>
                 ) : (
                     <div>
-                        <span>
-                            <Link className="header-btn" to={"/signup"}>
-                                S'inscrire
-                            </Link>
+                        <span
+                            style={{
+                                color: "#2eb0ba",
+                                fontSize: "12px",
+                                fontFamily: "Font-med",
+                            }}
+                            className="header-btn"
+                            onClick={() => {
+                                setDisplayModal("display");
+                            }}
+                        >
+                            S'inscrire
                         </span>
                         <span>
                             <Link className="header-btn" to={"/login"}>
