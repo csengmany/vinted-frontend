@@ -18,7 +18,13 @@ const Offers = ({ data, page, setPage, limit, setLimit }) => {
                     <option value="20">20</option>
                 </select>
             </form>
-
+            <div
+                onClick={() => {
+                    setPage({ page } + 1);
+                }}
+            >
+                page suivante{" "}
+            </div>
             <div className="products">
                 {!limit
                     ? data.offers.map((offer, index) => {

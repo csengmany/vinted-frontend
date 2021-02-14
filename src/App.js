@@ -13,10 +13,10 @@ import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
+import Offers from "./containers/Offers";
 
 //Import cookies
 import Cookies from "js-cookie";
-import Offers from "./containers/Offers";
 
 library.add(faSearch);
 
@@ -26,20 +26,20 @@ function App() {
     const [userToken, setUserToken] = useState(Cookies.get("userToken") || "");
 
     //state to set query params to limit number of offers and change the page
-    const [page, setPage] = useState();
-    const [limit, setLimit] = useState(5);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
     // state to search an offer by name
     const [search, setSearch] = useState("");
     // state to order price
     const [sortPrice, setSortPrice] = useState(false);
-
+    const [maxPage, setMaxPage] = useState("");
     //state to set range of price
     const [range, setRange] = useState([0, 10000]);
 
     const setUser = (token) => {
         if (token) {
             // Create a cookie name userToken
-            Cookies.set("userToken", token, { expires: 7 }); //expire in one day
+            Cookies.set("userToken", token, { expires: 7 }); //expire in seven days
             // update userToken
             setUserToken(token);
         } else {
@@ -49,26 +49,46 @@ function App() {
             setUserToken(null);
         }
     };
-    //useEffect to update data une seule fois:  au chargement du composant
     useEffect(() => {
-        //axios requet
+        //axios request
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    // "https://lereacteur-vinted-api.herokuapp.com/offers"
+                    // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${
+                    //     sortPrice ? "price-desc" : "price-asc"
+                    // }&priceMin=${range[0]}&priceMax=${
+                    //     range[1]
+                    // }&page=${page}&limit=${limit}`
                     `https://vinted-api-backend.herokuapp.com/offers?title=${search}&sort=${
                         sortPrice ? "price-desc" : "price-asc"
-                    }`
+                    }&priceMin=${range[0]}&priceMax=${
+                        range[1]
+                    }&page=${page}&limit=${limit}`
                 );
+
                 // console.log(response.data);
                 setData(response.data);
+                setMaxPage(Math.ceil(response.data.count / limit));
+
                 setIsLoading(false);
+                // console.log("offers", data.count);
+                // console.log("maxPage", maxPage);
             } catch (error) {
                 console.log(error.message);
             }
         };
         fetchDta();
-    }, [search, sortPrice]);
+    }, [
+        search,
+        sortPrice,
+        range,
+        limit,
+        page,
+        setMaxPage,
+        maxPage,
+        data.count,
+        setRange,
+    ]);
 
     return isLoading ? (
         <span>En cours de chargement...</span>
@@ -83,7 +103,10 @@ function App() {
                 setRange={setRange}
                 sortPrice={sortPrice}
                 setSortPrice={setSortPrice}
+                maxPage={maxPage}
+                setMaxPage={setMaxPage}
             />
+
             <Switch>
                 <Route path="/signup">
                     <SignUp userToken={userToken} setUser={setUser} />
@@ -113,7 +136,16 @@ function App() {
                     />
                 </Route> */}
                 <Route path="/">
-                    <Home data={data} search={search} />
+                    <Home
+                        data={data}
+                        search={search}
+                        page={page}
+                        setPage={setPage}
+                        limit={limit}
+                        setLimit={setLimit}
+                        maxPage={maxPage}
+                        setMaxPage={setMaxPage}
+                    />
                 </Route>
             </Switch>
         </Router>

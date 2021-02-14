@@ -1,12 +1,13 @@
 import logo from "../assets/images/logo-vinted.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useHistory } from "react-router-dom";
+import PriceRange from "../components/PriceRange";
+
 const Header = ({
     userToken,
     setUser,
     search,
     setSearch,
-    range,
     setRange,
     sortPrice,
     setSortPrice,
@@ -55,6 +56,8 @@ const Header = ({
                                 }}
                             />
                         </span>
+                        <span>Prix entre :</span>
+                        <PriceRange setRange={setRange} />
                     </div>
                 </div>
 
