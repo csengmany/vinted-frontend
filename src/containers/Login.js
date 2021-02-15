@@ -51,9 +51,7 @@ const Login = ({ setUser }) => {
                 <span style={{ color: "red" }}>{errorMessage}</span>
             </form>
             <span>
-                <Link to={"/signup"}>
-                    Tu as déjà un compte ? Connecte-toi !
-                </Link>
+                <Link to={"/signup"}>Pas encore de compte ? Inscris-toi !</Link>
             </span>
         </div>
     );
