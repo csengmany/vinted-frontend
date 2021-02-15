@@ -16,6 +16,7 @@ import Login from "./containers/Login";
 
 //Import cookies
 import Cookies from "js-cookie";
+import Publish from "./containers/Publish";
 
 library.add(faSearch);
 
@@ -117,10 +118,17 @@ function App() {
                     <SignUp userToken={userToken} setUser={setUser} />
                 </Route>
                 <Route path="/login">
-                    <Login userToken={userToken} setUser={setUser} />
+                    <Login
+                        userToken={userToken}
+                        setUser={setUser}
+                        setDisplayModal={setDisplayModal}
+                    />
                 </Route>
                 <Route path="/offer/:id">
                     <Offer data={data.offers} />
+                </Route>
+                <Route path="/publish">
+                    <Publish />
                 </Route>
 
                 <Route path="/">

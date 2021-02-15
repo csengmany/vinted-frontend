@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setDisplayModal }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -50,8 +50,12 @@ const Login = ({ setUser }) => {
                 <button>Se connecter</button>
                 <span style={{ color: "red" }}>{errorMessage}</span>
             </form>
-            <span>
-                <Link to={"/signup"}>Pas encore de compte ? Inscris-toi !</Link>
+            <span
+                onClick={() => {
+                    setDisplayModal("display");
+                }}
+            >
+                Pas encore de compte ? Inscris-toi !
             </span>
         </div>
     );

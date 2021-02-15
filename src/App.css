@@ -449,7 +449,7 @@ h2 {
     margin-bottom: 10px;
 }
 .sign-up a,
-.login a {
+.login span {
     font-size: 12px;
     text-decoration: none;
     color: var(--primary);
