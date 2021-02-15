@@ -51,12 +51,13 @@ const Publish = ({ userToken }) => {
             }
         } catch (error) {
             console.log("error", error.response.headers);
+            // console.log(error.response);
         }
     };
 
     return (
-        <div className="publish">
-            <div>
+        <div className="publish-container">
+            <div className="publish">
                 <h2>Vends ton article</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -66,87 +67,117 @@ const Publish = ({ userToken }) => {
                                 setFile(event.target.files[0]);
                             }}
                         />
-                        <p>Titre</p>
-                        <input
-                            type="text"
-                            placeholder="ex: Chemise Sézane verte"
-                            value={title}
-                            onChange={(event) => {
-                                setTitle(event.target.value);
-                            }}
-                        />
-                        <p>Décris ton article</p>
-                        <input
-                            type="text"
-                            value={description}
-                            onChange={(event) => {
-                                setDescription(event.target.value);
-                            }}
-                            placeholder="porté quelquefois, taille correctement"
-                        />
-                        <p>Marque</p>
-                        <input
-                            type="text"
-                            value={brand}
-                            onChange={(event) => {
-                                setBrand(event.target.value);
-                            }}
-                            placeholder="ex: Zara"
-                        />
-                        <p>Taille</p>
-                        <input
-                            type="text"
-                            value={size}
-                            onChange={(event) => {
-                                setSize(event.target.value);
-                            }}
-                            placeholder="ex: L/40/12"
-                        />
-                        <p>Couleur</p>
-                        <input
-                            type="text"
-                            value={color}
-                            onChange={(event) => {
-                                setColor(event.target.value);
-                            }}
-                            placeholder="ex: Fushia"
-                        />
-                        <p>État</p>
-                        <input
-                            type="text"
-                            value={condition}
-                            onChange={(event) => {
-                                setCondition(event.target.value);
-                            }}
-                            placeholder="ex: Neuf avec étiquette"
-                        />
-                        <p>Lieu</p>
-                        <input
-                            type="text"
-                            value={city}
-                            onChange={(event) => {
-                                setCity(event.target.value);
-                            }}
-                            placeholder="ex: Paris"
-                        />
-                        <div>
-                            <p>Prix</p>
-                            <input
-                                type="text"
-                                value={price}
-                                onChange={(event) => {
-                                    setPrice(event.target.value);
-                                }}
-                                placeholder="ex: 10,00 €"
-                            />
-                            <input
-                                type="checkbox"
-                                checked={isInterested}
-                                onChange={() => {
-                                    setIsInterested(!isInterested);
-                                }}
-                            />
-                            <span>Je suis intéressé(e) par les échanges</span>
+                        <div className="publish-section">
+                            <div>
+                                <h3>Titre</h3>
+                                <input
+                                    type="text"
+                                    placeholder="ex: Chemise Sézane verte"
+                                    value={title}
+                                    onChange={(event) => {
+                                        setTitle(event.target.value);
+                                    }}
+                                />
+                            </div>
+                            <div>
+                                <h3>Décris ton article</h3>
+                                <input
+                                    type="text"
+                                    value={description}
+                                    onChange={(event) => {
+                                        setDescription(event.target.value);
+                                    }}
+                                    placeholder="porté quelquefois, taille correctement"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="publish-section">
+                            <div>
+                                <h3>Marque</h3>
+                                <input
+                                    type="text"
+                                    value={brand}
+                                    onChange={(event) => {
+                                        setBrand(event.target.value);
+                                    }}
+                                    placeholder="ex: Zara"
+                                />
+                            </div>
+                            <div>
+                                <h3>Taille</h3>
+                                <input
+                                    type="text"
+                                    value={size}
+                                    onChange={(event) => {
+                                        setSize(event.target.value);
+                                    }}
+                                    placeholder="ex: L/40/12"
+                                />
+                            </div>
+                            <div>
+                                <h3>Couleur</h3>
+                                <input
+                                    type="text"
+                                    value={color}
+                                    onChange={(event) => {
+                                        setColor(event.target.value);
+                                    }}
+                                    placeholder="ex: Fushia"
+                                />
+                            </div>
+                            <div>
+                                <h3>État</h3>
+                                <input
+                                    type="text"
+                                    value={condition}
+                                    onChange={(event) => {
+                                        setCondition(event.target.value);
+                                    }}
+                                    placeholder="ex: Neuf avec étiquette"
+                                />
+                            </div>
+                            <div>
+                                <h3>Lieu</h3>
+                                <input
+                                    type="text"
+                                    value={city}
+                                    onChange={(event) => {
+                                        setCity(event.target.value);
+                                    }}
+                                    placeholder="ex: Paris"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="publish-section">
+                            <div>
+                                <h3>Prix</h3>
+                                <div>
+                                    <input
+                                        className="section-price-input"
+                                        type="text"
+                                        value={price}
+                                        onChange={(event) => {
+                                            setPrice(event.target.value);
+                                        }}
+                                        placeholder="ex: 10,00 €"
+                                    />
+                                    <label htmlFor="">
+                                        <input
+                                            type="checkbox"
+                                            checked={isInterested}
+                                            onChange={() => {
+                                                setIsInterested(!isInterested);
+                                            }}
+                                        />
+                                        <span>
+                                            Je suis intéressé(e) par les
+                                            échanges
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div>

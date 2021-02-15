@@ -21,6 +21,7 @@ import Login from "./containers/Login";
 //Import cookies
 import Cookies from "js-cookie";
 import Publish from "./containers/Publish";
+import Footer from "./components/Footer";
 
 library.add(faSearch, faTimesCircle, faPlus);
 
@@ -147,6 +148,7 @@ function App() {
                     />
                 </Route>
             </Switch>
+            <Footer />
         </Router>
     );
 }

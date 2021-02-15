@@ -586,13 +586,86 @@ h2 {
         PUBLISH
 ======================= */
 
-.publish {
+.publish-container {
     background: #eaedee;
+    width: 100vw;
+    height: 100%;
+}
+.publish {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+.publish h2,
+.publish h3 {
+    font-weight: normal;
+}
+.publish-section {
+    margin-bottom: 20px;
+    box-shadow: 0 0 2px var(--grey);
+}
+.publish-section div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid var(--bg);
+    background: white;
 }
 
 .publish input:not(input[type="checkbox"]) {
-    width: 400px;
+    width: 50%;
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid var(--bg);
+}
+.publish input:focus {
+    border-bottom: 1px solid var(--primary) !important;
+}
+
+.publish-section:last-child {
+    flex: 1;
+}
+.publish-section:last-child > div > div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 0;
+    border: none;
+}
+.publish button {
+    height: 45px;
+    width: max-content;
+    background-color: var(--primary);
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 0 10px;
+    margin-top: 0px;
+    outline: none;
+    cursor: pointer;
+    margin: 30px auto;
+}
+.publish button:hover {
+    background: #28a1aa;
+}
+
+/*--------------*/
+/* footer       */
+/*--------------*/
+.footer {
+    height: 100px;
+}
+.footer strong,
+.footer a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
