@@ -110,12 +110,12 @@ const Header = ({
                     </div>
                 )}
 
-                <button
+                <Link
+                    to={userToken ? "/publish" : "/login"}
                     className="primary-btn"
-                    onClick={() => alert("click sur vends tes articles")}
                 >
                     Vends tes articles
-                </button>
+                </Link>
             </div>
         </div>
     );

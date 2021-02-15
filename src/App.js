@@ -139,6 +139,7 @@ function App() {
                         setLimit={setLimit}
                         maxPage={maxPage}
                         setMaxPage={setMaxPage}
+                        userToken={userToken}
                     />
                 </Route>
             </Switch>

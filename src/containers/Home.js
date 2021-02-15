@@ -1,19 +1,26 @@
 import Product from "../components/Product";
 import tear from "../assets/images/tear.42d6cec6.svg";
+import { Link } from "react-router-dom";
 
-const Home = ({ data, limit, setLimit, setPage, maxPage, setMaxPage }) => {
+const Home = ({
+    data,
+    limit,
+    setLimit,
+    setPage,
+    maxPage,
+    setMaxPage,
+    userToken,
+}) => {
     return (
         <div className="Home">
             <div className="home-bg">
                 <div>
                     <div className="home-txt">
                         <span>Prêts à faire du tri dans vos placards ?</span>
-                        <button
-                            onClick={() =>
-                                alert("click sur commencer à vendre")
-                            }
-                        >
-                            Commencer à vendre
+                        <button>
+                            <Link to={userToken ? "/publish" : "/login"}>
+                                Commencer à vendre
+                            </Link>
                         </button>
                     </div>
                     <img src={tear} alt="tear" className="home-tear"></img>

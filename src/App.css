@@ -58,6 +58,7 @@
     text-decoration: none;
     color: var(--primary);
     font-size: 12px;
+    font-weight: bold;
 }
 .header > div span:first-child {
     margin-right: 20px;
@@ -74,6 +75,10 @@
     outline: none;
     cursor: pointer;
     font-family: "Font-Med";
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .red-btn {
     height: 30px;
@@ -190,6 +195,10 @@
     cursor: pointer;
     padding: 0 14px;
     margin-top: 32px;
+}
+.home-txt button a {
+    text-decoration: none;
+    color: white;
 }
 .home-tear {
     position: absolute;
