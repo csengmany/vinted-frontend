@@ -128,7 +128,7 @@ function App() {
                     <Offer data={data.offers} />
                 </Route>
                 <Route path="/publish">
-                    <Publish />
+                    <Publish userToken={userToken} />
                 </Route>
 
                 <Route path="/">

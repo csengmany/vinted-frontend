@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-const Publish = () => {
+
+const Publish = ({ userToken }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [brand, setBrand] = useState("");
@@ -11,13 +12,53 @@ const Publish = () => {
     const [price, setPrice] = useState("");
     const [isInterested, setIsInterested] = useState(false);
 
+    const [file, setFile] = useState({});
+
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            console.log(userToken);
+            const formData = new FormData();
+            formData.append("picture", file);
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("brand", brand);
+            formData.append("size", size);
+            formData.append("color", color);
+            formData.append("condition", condition);
+            formData.append("city", city);
+            formData.append("price", price);
+
+            const response = await axios.post(
+                "https://vinted-api-backend.herokuapp.com/offer/publish",
+                //"https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+                formData,
+                {
+                    headers: {
+                        authorization: `Bearer ${userToken}`,
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
+
+            console.log(response.data);
+        } catch (error) {
+            console.log("error", error.response.headers);
+        }
+    };
+
     return (
         <div className="publish">
             <div>
                 <h2>Vends ton article</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <input type="file" />
+                        <input
+                            type="file"
+                            onChange={(event) => {
+                                setFile(event.target.files[0]);
+                            }}
+                        />
                         <p>Titre</p>
                         <input
                             type="text"
