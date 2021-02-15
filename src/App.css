@@ -6,6 +6,7 @@
     --primary: #2eb0ba;
     --grey: #999999;
     --bg: #eaedee;
+    --red: #c2175b;
 }
 
 * {
@@ -83,8 +84,8 @@
     height: 30px;
     width: 115px;
     color: white;
-    background: #c2175b;
-    border: 1px solid #c2175b;
+    background: var(--red);
+    border: 1px solid var(--red);
     border-radius: 5px;
     font-size: 12px;
     outline: none;
@@ -274,6 +275,9 @@
 .product {
     margin: 0 10px 30px 10px;
 }
+.product-img:hover {
+    opacity: 0.8;
+}
 .product-link {
     color: black;
     text-decoration: none;
@@ -309,8 +313,8 @@
     align-items: center;
 }
 .offer-container > div {
-    height: 605px;
-    width: 450px;
+    height: 550px;
+    width: 400px;
     background: white;
     padding: 40px;
 }
@@ -350,7 +354,7 @@
     height: 36px;
     padding: 0 16px;
     line-height: 36px;
-    margin-top: 32px;
+    margin-top: 30px;
 }
 
 .offer-infos > span {
@@ -358,24 +362,31 @@
 }
 .offer-infos li {
     list-style-type: none;
-    margin-bottom: 10px;
+    padding: 3px 0;
     font-size: 14px;
 }
 .offer-infos li:first-child {
     margin-top: 20px;
 }
+li > div {
+    display: flex;
+}
+li > div span {
+    flex: 1;
+}
 li > div span:first-child {
     color: var(--grey);
 }
-li > div {
-    display: flex;
-    justify-content: space-between;
+li > div span:last-child {
+    font-weight: bold;
+    color: #666;
 }
+
 .separator {
     height: 1px;
     display: block;
     width: 100%;
-    margin: 50px auto;
+    margin: 30px auto;
     border-bottom: var(--bg) 1px solid;
 }
 h3 {
@@ -390,14 +401,15 @@ h3 {
 .offer-owner {
     display: flex;
     align-items: center;
-    margin: 15px 0 40px;
+    margin: 15px 0 10px 0;
+    cursor: pointer;
 }
 /* ====================
        SIGNUP
 ======================= */
 
 h2 {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 24px;
     margin-bottom: 20px;
     font-family: "font";
@@ -416,9 +428,8 @@ h2 {
 .sign-up {
     border-radius: 5px;
     box-shadow: 0 0 2px rgb(17 17 17 / 24%);
-
     width: max-content;
-    height: 540px;
+    height: 610px;
     padding: 10px 20px;
     background: white;
     position: relative;
@@ -426,7 +437,11 @@ h2 {
 }
 .close {
     position: absolute;
-    right: 20px;
+    top: 10px;
+    right: 10px;
+}
+.close :hover {
+    color: var(--red);
 }
 .sign-up form,
 .login form {
@@ -460,9 +475,13 @@ h2 {
     margin-right: 10px;
     margin-left: 0;
 }
+.sign-up-checkbox {
+    width: 300px;
+}
 .sign-up-form input[type="checkbox"] {
-    transform: scale(2);
-    margin-right: 20px;
+    transform: scale(1.5);
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .sign-up-checkbox > span {
@@ -471,9 +490,11 @@ h2 {
 }
 .sign-up p {
     width: 300px;
+    padding-left: 10px;
+    padding-right: 30px;
     font-size: 12px;
     color: grey;
-    padding-right: 30px;
+    text-align: left;
 }
 .sign-up button,
 .login button {
@@ -487,6 +508,12 @@ h2 {
     padding: 0 14px;
     margin-top: 30px;
     margin-bottom: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.sign-up button:hover,
+.login button:hover {
+    background: #28a1aa;
 }
 .sign-up a,
 .login span {
@@ -527,6 +554,22 @@ h2 {
 }
 .display {
     display: flex;
+}
+
+.sign-up input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.custom-file-upload span {
+    margin-left: 10px;
 }
 
 /* ====================

@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //Import fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+    faSearch,
+    faTimesCircle,
+    faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 //Import components
 import Header from "./components/Header";
 //Import containers
@@ -18,7 +22,7 @@ import Login from "./containers/Login";
 import Cookies from "js-cookie";
 import Publish from "./containers/Publish";
 
-library.add(faSearch, faTimesCircle);
+library.add(faSearch, faTimesCircle, faPlus);
 
 function App() {
     const [data, setData] = useState([]);

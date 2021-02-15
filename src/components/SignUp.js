@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignUp = ({ setUser, setDisplayModal }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [avatar, setAvatar] = useState({});
+    const [imageAvatar, setImageAvatar] = useState("");
     const [password, setPassword] = useState("");
-    const [newsletter, setNewsletter] = useState();
+    const [newsletter, setNewsletter] = useState(true);
     //Navigate go to homepage
     const history = useHistory();
 
@@ -51,15 +53,14 @@ const SignUp = ({ setUser, setDisplayModal }) => {
 
     return (
         <div className="sign-up">
-            <span
+            <FontAwesomeIcon
+                icon="times-circle"
                 className="close"
                 onClick={() => {
                     setDisplayModal("");
                     setErrorMessage("");
                 }}
-            >
-                X
-            </span>
+            />
             <h2>S'inscrire</h2>
 
             <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -95,13 +96,21 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     }}
                     placeholder="Mot de passe"
                 />
-                <input
-                    type="file"
-                    className="avatar"
-                    onChange={(event) => {
-                        setAvatar(event.target.files[0]);
-                    }}
-                />
+                <label className="custom-file-upload">
+                    <FontAwesomeIcon icon="plus" />
+                    <span>Ajoute une avatar</span>
+                    <input
+                        type="file"
+                        className="avatar"
+                        onChange={(event) => {
+                            setAvatar(event.target.files[0]);
+                            setImageAvatar(event.target.files[0]);
+                        }}
+                    />
+                    {console.log(imageAvatar)}
+                    <img src={imageAvatar.path} alt={imageAvatar.name} />
+                </label>
+
                 <div className="sign-up-checkbox">
                     <input
                         type="checkbox"
@@ -109,7 +118,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                         onChange={() => {
                             setNewsletter(!newsletter);
                         }}
-                    ></input>
+                    />
                     <span>S'inscrire à notre newsletter</span>
                 </div>
                 <p>

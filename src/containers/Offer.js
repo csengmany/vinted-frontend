@@ -39,7 +39,7 @@ const Offer = () => {
                 />
                 <div className="offer-infos">
                     <span>{Number(data.product_price)} €</span>
-                    <div className="offer-details">
+                    <ul className="offer-details">
                         {data.product_details.map((elem, index) => {
                             const keys = Object.keys(elem);
                             return (
@@ -51,11 +51,14 @@ const Offer = () => {
                                 </li>
                             );
                         })}
-                    </div>
+                    </ul>
                     <div className="separator"></div>
                     <h3>{data.product_name}</h3>
                     <span>{data.product_description}</span>
-                    <div className="offer-owner">
+                    <div
+                        className="offer-owner"
+                        onClick={() => alert("Go to user profile")}
+                    >
                         {data.owner.account.avatar && (
                             <img
                                 src={data.owner.account.avatar.secure_url}
