@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Publish = ({ userToken }) => {
     const [title, setTitle] = useState("");
@@ -13,6 +14,8 @@ const Publish = ({ userToken }) => {
     const [isInterested, setIsInterested] = useState(false);
 
     const [file, setFile] = useState({});
+
+    const history = useHistory();
 
     const handleSubmit = async (event) => {
         try {
@@ -41,7 +44,11 @@ const Publish = ({ userToken }) => {
                 }
             );
 
-            console.log(response.data);
+            console.log(response.data._id);
+            //redirect to offer after click on add
+            if (response.data._id) {
+                history.push(`/offer/${response.data._id}`);
+            }
         } catch (error) {
             console.log("error", error.response.headers);
         }

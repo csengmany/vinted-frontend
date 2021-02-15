@@ -111,6 +111,7 @@ const Header = ({
                 )}
 
                 <Link
+                    //go to publish if user is connected otherwise go to login
                     to={userToken ? "/publish" : "/login"}
                     className="primary-btn"
                 >
