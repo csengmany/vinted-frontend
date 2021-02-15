@@ -54,11 +54,10 @@
     cursor: pointer;
 }
 .header div a {
-    font-family: "Font-Med";
+    font-family: "Font-med";
     text-decoration: none;
     color: var(--primary);
     font-size: 12px;
-    font-weight: bold;
 }
 .header > div span:first-child {
     margin-right: 20px;

@@ -17,7 +17,7 @@ const Login = ({ setUser, setDisplayModal }) => {
             console.log(response);
             if (response.data.token) {
                 setUser(response.data.token);
-                history.push("/");
+                history.push("/publish");
             }
         } catch (error) {
             console.log(error.message);
