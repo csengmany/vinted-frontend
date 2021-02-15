@@ -429,8 +429,8 @@ h2 {
     border-radius: 5px;
     box-shadow: 0 0 2px rgb(17 17 17 / 24%);
     width: max-content;
-    height: 610px;
-    padding: 10px 20px;
+    height: auto;
+    padding: 10px 30px;
     background: white;
     position: relative;
     margin: 70px auto;
@@ -515,11 +515,23 @@ h2 {
 .login button:hover {
     background: #28a1aa;
 }
+.sign-up label {
+    display: flex;
+
+    align-items: center;
+}
 .sign-up a,
 .login span {
     font-size: 12px;
     text-decoration: none;
     color: var(--primary);
+}
+.sign-up img {
+    height: 50px;
+    width: 50px;
+    object-position: center;
+    object-fit: cover;
+    margin-left: 20px;
 }
 /* The Modal (background) */
 .modal {
@@ -562,8 +574,6 @@ h2 {
 .custom-file-upload {
     cursor: pointer;
     border-radius: 3px;
-    padding: 10px;
-    border: 1px solid var(--primary);
     color: var(--primary);
     margin-bottom: 20px;
     display: inline-block;

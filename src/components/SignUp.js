@@ -41,11 +41,19 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                 setPhone("");
                 setPassword("");
                 setAvatar({});
+                setImageAvatar("");
                 history.push("/");
             }
         } catch (error) {
             if (error.response) {
-                setErrorMessage(error.response.data.message);
+                if (
+                    error.response.data.message ===
+                    "Cannot read property 'path' of undefined"
+                ) {
+                    setErrorMessage("Il manque l'avatar");
+                } else {
+                    setErrorMessage(error.response.data.message);
+                }
             }
             console.log("error", error);
         }
@@ -59,6 +67,12 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                 onClick={() => {
                     setDisplayModal("");
                     setErrorMessage("");
+                    setUsername("");
+                    setEmail("");
+                    setPhone("");
+                    setPassword("");
+                    setAvatar({});
+                    setImageAvatar("");
                 }}
             />
             <h2>S'inscrire</h2>
@@ -97,18 +111,29 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     placeholder="Mot de passe"
                 />
                 <label className="custom-file-upload">
-                    <FontAwesomeIcon icon="plus" />
-                    <span>Ajoute une avatar</span>
+                    {!imageAvatar ? (
+                        <>
+                            <FontAwesomeIcon icon="plus" />
+                            <span>Ajoute un avatar</span>
+                        </>
+                    ) : (
+                        <FontAwesomeIcon icon="times-circle" />
+                    )}
                     <input
                         type="file"
                         className="avatar"
                         onChange={(event) => {
                             setAvatar(event.target.files[0]);
-                            setImageAvatar(event.target.files[0]);
+
+                            // console.log(event.target.files[0]); // objet :File {name: "_p...}
+
+                            setImageAvatar(
+                                URL.createObjectURL(event.target.files[0])
+                            );
                         }}
                     />
-                    {console.log(imageAvatar)}
-                    <img src={imageAvatar.path} alt={imageAvatar.name} />
+                    {/* {console.log(imageAvatar)} */}
+                    {imageAvatar && <img src={imageAvatar} alt={username} />}
                 </label>
 
                 <div className="sign-up-checkbox">
