@@ -7,12 +7,12 @@
     --grey: #999999;
     --bg: #eaedee;
 }
+
 * {
     box-sizing: border-box;
-    font-family: "Font";
+    font-family: "font";
     font-size: 16px;
 }
-
 /* ====================
        header
 ======================= */
@@ -179,7 +179,6 @@
     position: absolute;
     top: 75px;
     box-shadow: 0 0 2px rgb(17 17 17 / 24%);
-    font-family: "Font";
 }
 
 .home-txt button {
@@ -204,6 +203,40 @@
     bottom: 0;
 }
 
+.home-no-offer {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    font-size: 25px;
+}
+.home-limit-page-container {
+    width: 1280px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.home-limit {
+    margin-top: 10px;
+    text-align: right;
+}
+.home-limit select {
+    cursor: pointer;
+}
+.home-page {
+    text-align: right;
+}
+.home-page button {
+    outline: none;
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+.home-page button:hover {
+    color: var(--primary);
+    font-weight: bold;
+}
 /* products */
 .products {
     width: 1280px;
@@ -212,12 +245,12 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: 30px;
-    font-family: "Font";
 }
 .product-owner {
     display: flex;
     align-items: center;
     padding: 10px;
+    cursor: pointer;
 }
 .product-owner > span {
     color: var(--grey);
@@ -253,7 +286,6 @@
     font-size: 12px;
     color: var(--grey);
     padding: 0 6px 16px 0;
-    font-family: "Font";
 }
 .product-details span:first-child {
     color: black;
@@ -275,7 +307,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: "Font";
 }
 .offer-container > div {
     height: 605px;
@@ -349,7 +380,7 @@ li > div {
 }
 h3 {
     font-size: 16px;
-    font-family: "Font-Med";
+
     margin-bottom: 15px;
 }
 .offer-infos > span:not(:first-child) {
@@ -380,7 +411,6 @@ h2 {
     height: 300px;
     width: 300px;
     margin: 0 auto;
-    font-family: "font";
     font-size: 16px;
 }
 .sign-up {

@@ -5,7 +5,10 @@ const Product = ({ id, offer }) => {
         // if click on product it will link to the offer page
 
         <div className="product">
-            <div className="product-owner">
+            <div
+                className="product-owner"
+                onClick={() => alert("Go to user profile")}
+            >
                 {offer.owner.account.avatar && (
                     <span className="product-owner-avatar">
                         <img

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //Import fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 //Import components
 import Header from "./components/Header";
 //Import containers
@@ -18,7 +18,7 @@ import Login from "./containers/Login";
 import Cookies from "js-cookie";
 import Publish from "./containers/Publish";
 
-library.add(faSearch);
+library.add(faSearch, faTimesCircle);
 
 function App() {
     const [data, setData] = useState([]);
@@ -66,7 +66,7 @@ function App() {
                     }&page=${page}&limit=${limit}`
                 );
 
-                // console.log(response.data);
+                console.log("data", response.data);
                 setData(response.data);
                 setMaxPage(Math.ceil(response.data.count / limit));
 
@@ -74,7 +74,7 @@ function App() {
                 // console.log("offers", data.count);
                 // console.log("maxPage", maxPage);
             } catch (error) {
-                console.log(error.message);
+                console.log(error.response);
             }
         };
         fetchDta();
