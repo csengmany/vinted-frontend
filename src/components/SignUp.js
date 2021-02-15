@@ -6,7 +6,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    // const [avatar, setAvatar] = useState("");
+    const [avatar, setAvatar] = useState({});
     const [password, setPassword] = useState("");
     const [newsletter, setNewsletter] = useState();
     //Navigate go to homepage
@@ -17,17 +17,17 @@ const SignUp = ({ setUser, setDisplayModal }) => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
+            const formData = new FormData();
+            formData.append("avatar", avatar);
+            formData.append("username", username);
+            formData.append("email", email);
+            formData.append("phone", phone);
+            formData.append("password", password);
 
             const response = await axios.post(
                 "https://vinted-api-backend.herokuapp.com/user/signup",
                 //"https://lereacteur-vinted-api.herokuapp.com/user/signup",
-                {
-                    email: email,
-                    username: username,
-                    phone: phone,
-                    password: password,
-                    // avatar: avatar,
-                }
+                formData
             );
             console.log("token", response.data.token);
             if (response.data.token) {
@@ -38,6 +38,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                 setEmail("");
                 setPhone("");
                 setPassword("");
+                setAvatar({});
                 history.push("/");
             }
         } catch (error) {
@@ -94,14 +95,13 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     }}
                     placeholder="Mot de passe"
                 />
-                {/* <input
+                <input
                     type="file"
                     className="avatar"
-                    accept="image/png, image/jpeg, image/jpg"
                     onChange={(event) => {
-                        setAvatar(event.target.files);
+                        setAvatar(event.target.files[0]);
                     }}
-                /> */}
+                />
                 <div className="sign-up-checkbox">
                     <input
                         type="checkbox"

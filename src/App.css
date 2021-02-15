@@ -234,6 +234,8 @@
 .product-img img {
     width: 235px;
     height: 365px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .product {
@@ -283,8 +285,8 @@
 }
 
 .offer img {
-    height: 605px;
-    width: 450px;
+    max-height: 80vh;
+    max-width: 50vw;
 }
 
 .offer-details > div > span:not(:nth-child(2n)) {
