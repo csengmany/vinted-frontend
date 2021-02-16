@@ -124,15 +124,14 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                         className="avatar"
                         onChange={(event) => {
                             setAvatar(event.target.files[0]);
-
                             // console.log(event.target.files[0]); // objet :File {name: "_p...}
-
                             setImageAvatar(
                                 URL.createObjectURL(event.target.files[0])
                             );
                         }}
                     />
                     {/* {console.log(imageAvatar)} */}
+                    {/* display avatar */}
                     {imageAvatar && <img src={imageAvatar} alt={username} />}
                 </label>
 
@@ -151,6 +150,8 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     &#38; Conditions et Politique de Confidentialité de Vinted.
                     Je confirme avoir au moins 18 ans.
                 </p>
+
+                {/* display error message */}
                 {errorMessage && (
                     <span style={{ color: "red", marginTop: "15px" }}>
                         {errorMessage}

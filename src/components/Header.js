@@ -112,7 +112,7 @@ const Header = ({
 
                 <Link
                     //go to publish if user is connected otherwise go to login
-                    to={userToken ? "/publish" : "/login"}
+                    to="/publish"
                     className="primary-btn"
                 >
                     Vends tes articles

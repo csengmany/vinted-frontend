@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Publish = ({ userToken }) => {
+    const token = Cookies.get("userToken");
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [brand, setBrand] = useState("");
@@ -13,7 +16,14 @@ const Publish = ({ userToken }) => {
     const [price, setPrice] = useState("");
     const [isInterested, setIsInterested] = useState(false);
 
+    const [imageOffer, setImmageOffer] = useState("");
     const [file, setFile] = useState({});
+
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+        console.log(event.target.files[0]);
+        setImmageOffer(URL.createObjectURL(event.target.files[0]));
+    };
 
     const history = useHistory();
 
@@ -43,9 +53,10 @@ const Publish = ({ userToken }) => {
                     },
                 }
             );
-
-            console.log(response.data._id);
-            //redirect to offer after click on add
+            console.log("data=", response.data);
+            console.log("data.url=", response.data.product_image.secure_url);
+            console.log("id=", response.data._id);
+            //redirect to offer after click on add to publish
             if (response.data._id) {
                 history.push(`/offer/${response.data._id}`);
             }
@@ -55,18 +66,27 @@ const Publish = ({ userToken }) => {
         }
     };
 
-    return (
+    return token ? (
         <div className="publish-container">
             <div className="publish">
                 <h2>Vends ton article</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <input
-                            type="file"
-                            onChange={(event) => {
-                                setFile(event.target.files[0]);
-                            }}
-                        />
+                        <div className="publish-section">
+                            <input type="file" onChange={handleFileChange} />
+                            {imageOffer && (
+                                <img
+                                    src={imageOffer}
+                                    alt={title}
+                                    style={{
+                                        height: "200px",
+                                        width: "200px",
+                                        objectFit: "cover",
+                                        objectPosition: "center",
+                                    }}
+                                />
+                            )}
+                        </div>
                         <div className="publish-section">
                             <div>
                                 <h3>Titre</h3>
@@ -186,6 +206,8 @@ const Publish = ({ userToken }) => {
                 </form>
             </div>
         </div>
+    ) : (
+        <Redirect to={{ pathname: "/login", state: { fromPublish: true } }} />
     );
 };
 
