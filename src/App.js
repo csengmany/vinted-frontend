@@ -78,8 +78,6 @@ function App() {
                 setMaxPage(Math.ceil(response.data.count / limit));
 
                 setIsLoading(false);
-                // console.log("offers", data.count);
-                // console.log("maxPage", maxPage);
             } catch (error) {
                 console.log(error.response);
             }

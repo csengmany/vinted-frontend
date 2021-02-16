@@ -124,14 +124,13 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                         className="avatar"
                         onChange={(event) => {
                             setAvatar(event.target.files[0]);
-                            // console.log(event.target.files[0]); // objet :File {name: "_p...}
                             setImageAvatar(
                                 URL.createObjectURL(event.target.files[0])
                             );
                         }}
                         accept="image/*"
                     />
-                    {/* {console.log(imageAvatar)} */}
+
                     {/* display avatar */}
                     {imageAvatar && <img src={imageAvatar} alt={username} />}
                 </label>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Publish = ({ userToken }) => {
     const token = Cookies.get("userToken");
@@ -65,7 +66,6 @@ const Publish = ({ userToken }) => {
             }
         } catch (error) {
             console.log("error", error.response.headers);
-            // console.log(error.response);
             if (error.response) {
                 setErrorMessage(error.response.data.message);
             }
@@ -80,23 +80,33 @@ const Publish = ({ userToken }) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <div className="publish-section">
-                            <input
-                                type="file"
-                                onChange={handleFileChange}
-                                accept="image/*"
-                            />
-                            {imageOffer && (
-                                <img
-                                    src={imageOffer}
-                                    alt={title}
-                                    style={{
-                                        height: "200px",
-                                        width: "200px",
-                                        objectFit: "cover",
-                                        objectPosition: "center",
-                                    }}
+                            <label className="custom-file-upload">
+                                {!imageOffer ? (
+                                    <>
+                                        <FontAwesomeIcon icon="plus" />
+                                        <span>Ajoute une photo</span>
+                                    </>
+                                ) : (
+                                    <FontAwesomeIcon icon="times-circle" />
+                                )}
+                                <input
+                                    type="file"
+                                    onChange={handleFileChange}
+                                    accept="image/*"
                                 />
-                            )}
+                                {imageOffer && (
+                                    <img
+                                        src={imageOffer}
+                                        alt={title}
+                                        style={{
+                                            height: "200px",
+                                            width: "200px",
+                                            objectFit: "cover",
+                                            objectPosition: "center",
+                                        }}
+                                    />
+                                )}
+                            </label>
                         </div>
                         <div className="publish-section">
                             <div>

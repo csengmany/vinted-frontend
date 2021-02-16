@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Offer = () => {
-    // const  id  = useParams(); //object{id:667898080} et donc il faudra faire un id.id
-    const { id } = useParams(); // 667898080
+    const { id } = useParams();
     const history = useHistory();
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -70,11 +69,6 @@ const Offer = () => {
                     </div>
                     <button
                         onClick={() => {
-                            // console.log(
-                            //     "amount et name",
-                            //     data.product_price,
-                            //     data.product_name
-                            // );
                             history.push({
                                 pathname: "/payment",
                                 state: {

@@ -553,7 +553,6 @@ h2 {
 /* The Close Button */
 .close {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
 }
@@ -568,7 +567,7 @@ h2 {
     display: flex;
 }
 
-.sign-up input[type="file"] {
+input[type="file"] {
     display: none;
 }
 .custom-file-upload {
@@ -734,4 +733,16 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }

@@ -36,7 +36,6 @@ const Home = ({
                 <>
                     <div className="products">
                         {data.offers.map((offer, index) => {
-                            // console.log(offer._id);
                             return (
                                 <Product
                                     key={index}
