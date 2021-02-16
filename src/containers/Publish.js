@@ -101,13 +101,14 @@ const Publish = ({ userToken }) => {
                             </div>
                             <div>
                                 <h3>Décris ton article</h3>
-                                <input
+                                <textarea
                                     type="text"
                                     value={description}
                                     onChange={(event) => {
                                         setDescription(event.target.value);
                                     }}
-                                    placeholder="porté quelquefois, taille correctement"
+                                    placeholder="ex: porté quelquefois, taille correctement"
+                                    rows="5"
                                 />
                             </div>
                         </div>

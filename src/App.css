@@ -614,13 +614,16 @@ h2 {
     background: white;
 }
 
-.publish input:not(input[type="checkbox"]) {
+.publish input:not(input[type="checkbox"]),
+.publish textarea {
+    resize: none;
     width: 50%;
     border: none;
     outline: 0;
     border-bottom: 1px solid var(--bg);
 }
-.publish input:focus {
+.publish input:focus,
+.publish textarea:focus {
     border-bottom: 1px solid var(--primary) !important;
 }
 
