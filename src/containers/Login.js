@@ -21,7 +21,9 @@ const Login = ({ setUser, setDisplayModal }) => {
                 history.push(
                     location.state && location.state.fromPublish
                         ? "/publish"
-                        : "/"
+                        : // : location.state.fromOffer
+                          // ? "/payment"
+                          "/"
                 );
             }
         } catch (error) {

@@ -1,7 +1,8 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import { useLocation } from "react-router-dom";
+import { useLocation, Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 //send key to Stripe API
 const stripePromise = loadStripe(
@@ -14,8 +15,9 @@ const Payment = () => {
     console.log("LOCATION", location);
     console.log("state", location.state);
     const { name, amount, owner } = location.state;
+    const token = Cookies.get("userToken");
 
-    return (
+    return token ? (
         <div className="payment-container">
             <div className="payment">
                 <h3>Résumé de la commande</h3>
@@ -50,6 +52,8 @@ const Payment = () => {
                 </Elements>
             </div>
         </div>
+    ) : (
+        <Redirect to={{ pathname: "/login", state: { fromOffer: true } }} />
     );
 };
 
