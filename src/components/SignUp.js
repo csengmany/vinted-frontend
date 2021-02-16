@@ -27,8 +27,8 @@ const SignUp = ({ setUser, setDisplayModal }) => {
             formData.append("password", password);
 
             const response = await axios.post(
-                // "https://vinted-api-backend.herokuapp.com/user/signup",
-                "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                "https://vinted-api-backend.herokuapp.com/user/signup",
+                // "https://lereacteur-vinted-api.herokuapp.com/user/signup",
                 formData
             );
             console.log("token", response.data.token);

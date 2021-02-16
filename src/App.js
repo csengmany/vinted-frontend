@@ -61,16 +61,16 @@ function App() {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${
-                        sortPrice ? "price-desc" : "price-asc"
-                    }&priceMin=${range[0]}&priceMax=${
-                        range[1]
-                    }&page=${page}&limit=${limit}`
-                    // `https://vinted-api-backend.herokuapp.com/offers?title=${search}&sort=${
+                    // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${
                     //     sortPrice ? "price-desc" : "price-asc"
                     // }&priceMin=${range[0]}&priceMax=${
                     //     range[1]
                     // }&page=${page}&limit=${limit}`
+                    `https://vinted-api-backend.herokuapp.com/offers?title=${search}&sort=${
+                        sortPrice ? "price-desc" : "price-asc"
+                    }&priceMin=${range[0]}&priceMax=${
+                        range[1]
+                    }&page=${page}&limit=${limit}`
                 );
 
                 console.log("data", response.data);

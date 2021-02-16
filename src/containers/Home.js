@@ -72,7 +72,10 @@ const Home = ({
                                         key={index}
                                         onClick={() => {
                                             setPage(index + 1);
-                                            console.log(data.count);
+                                            console.log(
+                                                "data.count",
+                                                data.count
+                                            );
                                         }}
                                     >
                                         {index + 1}

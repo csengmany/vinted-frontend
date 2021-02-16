@@ -1,12 +1,11 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import Cookies from "js-cookie";
 import axios from "axios";
-const CheckoutForm = () => {
+const CheckoutForm = ({ amount, name }) => {
     const stripe = useStripe();
     const elements = useElements();
-    const userToken = Cookies.get("userToken");
     const [succeeded, setSucceeded] = useState("");
+    console.log("amount name", amount, name);
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -16,17 +15,22 @@ const CheckoutForm = () => {
             // make a request to the Stripe API to get a token
             const stripeResponse = await stripe.createToken(cardElements, {
                 //id of buyer => usertoken
-                name: userToken,
+                name: "id l'acheteur",
             });
-            console.log("stripeResponse", stripeResponse);
-            console.log("stripeResponse-id", stripeResponse.token.id);
+
+            // console.log("stripeResponse", stripeResponse); //objet {token{...}}
+            //  console.log("stripeResponse.token.id", stripeResponse.token.id); // token tok_1ILXTSC07VZW5a1i9Jbulgv3
             const stripeToken = stripeResponse.token.id;
             //Request to my server to perform the transaction
+            console.log("amount name 2", amount, name);
             const response = await axios.post(
-                // "https://vinted-api-backend.herokuapp.com/payment" ,
-                "https://lereacteur-vinted-api.herokuapp.com/payment",
+                // "http://localhost:3100/payment",
+                "https://vinted-api-backend.herokuapp.com/payment",
+                // "https://lereacteur-vinted-api.herokuapp.com/payment",
                 {
-                    stripeToken: stripeToken,
+                    amount,
+                    name,
+                    stripeToken,
                 }
             );
             console.log("response status", response.status);

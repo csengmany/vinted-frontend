@@ -16,10 +16,10 @@ const Offer = () => {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-                    // `https://vinted-api-backend.herokuapp.com/offer/${id}`
+                    // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+                    `https://vinted-api-backend.herokuapp.com/offer/${id}`
                 );
-                console.log(response.data);
+                console.log("data", response.data);
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -70,7 +70,18 @@ const Offer = () => {
                     </div>
                     <button
                         onClick={() => {
-                            history.push("/payment");
+                            // console.log(
+                            //     "amount et name",
+                            //     data.product_price,
+                            //     data.product_name
+                            // );
+                            history.push({
+                                pathname: "/payment",
+                                state: {
+                                    amount: data.product_price,
+                                    name: data.product_name,
+                                },
+                            });
                         }}
                     >
                         Acheter
