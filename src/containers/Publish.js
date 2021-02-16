@@ -19,6 +19,9 @@ const Publish = ({ userToken }) => {
     const [imageOffer, setImmageOffer] = useState("");
     const [file, setFile] = useState({});
 
+    //errorMessage
+    const [errorMessage, setErrorMessage] = useState("");
+
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
         console.log(event.target.files[0]);
@@ -63,6 +66,10 @@ const Publish = ({ userToken }) => {
         } catch (error) {
             console.log("error", error.response.headers);
             // console.log(error.response);
+            if (error.response) {
+                setErrorMessage(error.response.data.message);
+            }
+            console.log("error", error);
         }
     };
 
@@ -207,6 +214,11 @@ const Publish = ({ userToken }) => {
                     </div>
                     <div>
                         <button type="submit">Ajouter</button>
+                        {errorMessage && (
+                            <span style={{ color: "red", marginLeft: "10px" }}>
+                                {errorMessage}
+                            </span>
+                        )}
                     </div>
                 </form>
             </div>
