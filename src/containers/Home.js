@@ -56,6 +56,7 @@ const Home = ({
                                 onChange={(event) => {
                                     setLimit(event.target.value);
                                     setMaxPage(Math.ceil(data.count / limit));
+                                    setPage(1);
                                 }}
                             >
                                 <option value="5">5</option>
