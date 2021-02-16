@@ -533,6 +533,9 @@ h2 {
     object-fit: cover;
     margin-left: 20px;
 }
+.login span {
+    cursor: pointer;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
