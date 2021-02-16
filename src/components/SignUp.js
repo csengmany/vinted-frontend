@@ -129,6 +129,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                                 URL.createObjectURL(event.target.files[0])
                             );
                         }}
+                        accept="image/*"
                     />
                     {/* {console.log(imageAvatar)} */}
                     {/* display avatar */}

@@ -73,7 +73,11 @@ const Publish = ({ userToken }) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <div className="publish-section">
-                            <input type="file" onChange={handleFileChange} />
+                            <input
+                                type="file"
+                                onChange={handleFileChange}
+                                accept="image/*"
+                            />
                             {imageOffer && (
                                 <img
                                     src={imageOffer}
