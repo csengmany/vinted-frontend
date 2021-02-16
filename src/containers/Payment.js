@@ -6,8 +6,6 @@ import CheckoutForm from "../components/CheckoutForm";
 const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
 console.log(stripePromise);
 const Payment = () => {
-    const title = "ps4";
-    const price = "40";
     return (
         <Elements stripe={stripePromise}>
             <CheckoutForm />
