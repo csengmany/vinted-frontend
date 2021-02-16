@@ -1,11 +1,16 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+
 const CheckoutForm = ({ amount, name, owner }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [succeeded, setSucceeded] = useState("");
     console.log("amount, name, owner", amount, name, owner);
+
+    const idUser = Cookies.get("userToken");
+
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -15,7 +20,7 @@ const CheckoutForm = ({ amount, name, owner }) => {
             // make a request to the Stripe API to get a token
             const stripeResponse = await stripe.createToken(cardElements, {
                 //id of buyer => usertoken
-                name: "id l'acheteur",
+                name: idUser,
             });
 
             const stripeToken = stripeResponse.token.id;
