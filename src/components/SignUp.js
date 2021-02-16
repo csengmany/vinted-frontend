@@ -84,7 +84,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
-                    placeholder="Nom d'utilisateur"
+                    placeholder="*Nom d'utilisateur"
                 />
                 <input
                     type="email"
@@ -92,7 +92,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }}
-                    placeholder="Email"
+                    placeholder="*Email"
                 />
                 <input
                     type="text"
@@ -108,7 +108,7 @@ const SignUp = ({ setUser, setDisplayModal }) => {
                     onChange={(event) => {
                         setPassword(event.target.value);
                     }}
-                    placeholder="Mot de passe"
+                    placeholder="*Mot de passe"
                 />
                 <label className="custom-file-upload">
                     {!imageAvatar ? (

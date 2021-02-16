@@ -12,16 +12,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 //Import components
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 //Import containers
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import SignUp from "./components/SignUp";
 import Login from "./containers/Login";
+import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 //Import cookies
 import Cookies from "js-cookie";
-import Publish from "./containers/Publish";
-import Footer from "./components/Footer";
 
 library.add(faSearch, faTimesCircle, faPlus);
 
@@ -134,6 +136,9 @@ function App() {
                 </Route>
                 <Route path="/publish">
                     <Publish userToken={userToken} />
+                </Route>
+                <Route path="/payment">
+                    <Payment />
                 </Route>
 
                 <Route path="/">

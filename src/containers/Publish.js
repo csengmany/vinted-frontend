@@ -93,7 +93,7 @@ const Publish = ({ userToken }) => {
                         </div>
                         <div className="publish-section">
                             <div>
-                                <h3>Titre</h3>
+                                <h3>*Titre</h3>
                                 <input
                                     type="text"
                                     placeholder="ex: Chemise Sézane verte"
@@ -177,7 +177,7 @@ const Publish = ({ userToken }) => {
 
                         <div className="publish-section">
                             <div>
-                                <h3>Prix</h3>
+                                <h3>*Prix</h3>
                                 <div>
                                     <input
                                         className="section-price-input"
