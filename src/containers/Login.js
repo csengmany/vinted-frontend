@@ -25,11 +25,10 @@ const Login = ({ setUser, setDisplayModal }) => {
                 );
             }
         } catch (error) {
-            console.log(error.message);
-            setErrorMessage("Something went error, please try again");
-            if (error.message) {
-                console.log(error.response.message);
+            if (error.response) {
+                setErrorMessage(error.response.data.message);
             }
+            console.log("error", error);
         }
     };
     return (
@@ -53,7 +52,9 @@ const Login = ({ setUser, setDisplayModal }) => {
                     placeholder="Mot de passe"
                 />
                 <button>Se connecter</button>
-                <span style={{ color: "red" }}>{errorMessage}</span>
+                <span style={{ color: "red", marginBottom: "10px" }}>
+                    {errorMessage}
+                </span>
             </form>
             <span
                 onClick={() => {
