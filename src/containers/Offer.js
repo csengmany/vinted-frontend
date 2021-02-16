@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
@@ -6,6 +6,7 @@ import axios from "axios";
 const Offer = () => {
     // const  id  = useParams(); //object{id:667898080} et donc il faudra faire un id.id
     const { id } = useParams(); // 667898080
+    const history = useHistory();
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -15,8 +16,8 @@ const Offer = () => {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    //`https://lereacteur-vinted-api.herokuapp.com/offer/${id.id}`
-                    `https://vinted-api-backend.herokuapp.com/offer/${id}`
+                    `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+                    // `https://vinted-api-backend.herokuapp.com/offer/${id}`
                 );
                 console.log(response.data);
                 setData(response.data);
@@ -69,7 +70,7 @@ const Offer = () => {
                     </div>
                     <button
                         onClick={() => {
-                            alert("click sur acheter");
+                            history.push("/payment");
                         }}
                     >
                         Acheter

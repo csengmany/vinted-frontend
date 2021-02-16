@@ -3,11 +3,11 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 
 //send key to Stripe API
-const stripePromise = loadStripe(
-    "pk_test_51ILRIOC07VZW5a1iIHvpLpxNXcunRjmn3Or0CrkK0RjTB9v4DKnNKAFRcFiLon5aIEfQ2sjXGND9mlJ3lIi4oU2g00FUNAm9UH"
-);
-
+const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+console.log(stripePromise);
 const Payment = () => {
+    const title = "ps4";
+    const price = "40";
     return (
         <Elements stripe={stripePromise}>
             <CheckoutForm />
