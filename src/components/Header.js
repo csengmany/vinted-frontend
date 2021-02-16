@@ -93,7 +93,7 @@ const Header = ({
                         >
                             S'inscrire
                         </span>
-                        {location.pathname === "/" && (
+                        {location.pathname !== "/login" && (
                             <span>
                                 <Link className="header-btn" to={"/login"}>
                                     Se connecter
