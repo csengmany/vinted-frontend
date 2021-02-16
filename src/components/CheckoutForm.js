@@ -1,11 +1,11 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import axios from "axios";
-const CheckoutForm = ({ amount, name }) => {
+const CheckoutForm = ({ amount, name, owner }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [succeeded, setSucceeded] = useState("");
-    console.log("amount name", amount, name);
+    console.log("amount name", amount, name, owner);
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -36,7 +36,7 @@ const CheckoutForm = ({ amount, name }) => {
             console.log("response status", response.status);
             if (response.status === 200) {
                 setSucceeded(
-                    "Achat réalisé avec succès ! Maintenant, attends que le vendeur t'envoie le colis"
+                    `Achat réalisé avec succès ! Maintenant, attends que ${owner} t'envoie le colis`
                 );
             }
         } catch (error) {
@@ -46,10 +46,10 @@ const CheckoutForm = ({ amount, name }) => {
     return (
         <div className="checkoutForm">
             <form onSubmit={handleSubmit}>
-                <CardElement />
+                <CardElement className="cardElement" />
                 <button type="submit">Acheter</button>
             </form>
-            <span>{succeeded}</span>
+            <p>{succeeded}</p>
         </div>
     );
 };

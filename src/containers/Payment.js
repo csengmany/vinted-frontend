@@ -14,16 +14,42 @@ const Payment = () => {
     const location = useLocation();
     console.log("LOCATION", location);
     console.log("state", location.state);
-    const { name, amount } = location.state;
+    const { name, amount, owner } = location.state;
 
     return (
-        <div>
-            <p>Mon panier</p>
-            <p>{name}</p>
-            <p>Total à payer : {amount} euros</p>
-            <Elements stripe={stripePromise}>
-                <CheckoutForm amount={amount} name={name} />
-            </Elements>
+        <div className="payment-container">
+            <div className="payment">
+                <h3>Résumé de la commande</h3>
+                <ul>
+                    <li>
+                        <span>Commande</span> <span>{amount} €</span>
+                    </li>
+                    <li>
+                        <span>Frais de protection acheteurs</span>
+                        <span>0.50 €</span>
+                    </li>
+                    <li>
+                        <span>Frais de port</span> <span>1.00 €</span>
+                    </li>
+                </ul>
+                <div className="separator"></div>
+                <div className="total">
+                    <span>Total</span> <span>{Number(amount) + 1.5} €</span>
+                </div>
+                <p>
+                    Il ne vous reste plus qu'un étape pour vous offrir&nbsp;
+                    <strong>{name}</strong>. Vous allez payer&nbsp;
+                    <strong>{Number(amount) + 1.5}</strong>€ (frais de
+                    protection et frais de port inclus).
+                </p>
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm
+                        amount={Number(amount) + 1.5}
+                        name={name}
+                        owner={owner}
+                    />
+                </Elements>
+            </div>
         </div>
     );
 };

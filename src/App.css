@@ -655,6 +655,69 @@ h2 {
     background: #28a1aa;
 }
 
+/* ====================
+        PAYMENT
+======================= */
+.payment-container {
+    background: var(--bg);
+    padding-top: 40px;
+}
+.payment {
+    background: white;
+    width: 600px;
+    margin: 0 auto;
+
+    padding: 36px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.payment li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    color: var(--grey);
+}
+.payment h3 {
+    color: var(--grey);
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 20px 0 40px 0;
+}
+.checkoutForm form {
+    display: flex;
+    flex-direction: column;
+}
+.checkoutForm button {
+    background: #00c06d;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    height: 44px;
+    padding: 0 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.checkoutForm button:hover {
+    background: #089c5c;
+}
+.cardElement {
+    margin-top: 10px;
+    border: 1px solid var(--bg);
+    border-radius: 3px;
+    padding: 10px;
+}
+.payment p:last-child {
+    color: #089c5c;
+    text-align: center;
+}
 /*--------------*/
 /* footer       */
 /*--------------*/
