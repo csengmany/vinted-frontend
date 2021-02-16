@@ -14,7 +14,7 @@ const Payment = () => {
     const location = useLocation();
     console.log("LOCATION", location);
     console.log("state", location.state);
-    const { name, amount, owner } = location.state;
+    const { name, amount, owner, id } = location.state;
     const token = Cookies.get("userToken");
 
     return token ? (
@@ -53,7 +53,9 @@ const Payment = () => {
             </div>
         </div>
     ) : (
-        <Redirect to={{ pathname: "/login", state: { fromOffer: true } }} />
+        <Redirect
+            to={{ pathname: "/login", state: { fromOffer: true, id: id } }}
+        />
     );
 };
 

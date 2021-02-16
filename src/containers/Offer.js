@@ -75,6 +75,7 @@ const Offer = () => {
                                     amount: data.product_price,
                                     name: data.product_name,
                                     owner: data.owner.account.username,
+                                    id: data._id,
                                 },
                             });
                         }}
