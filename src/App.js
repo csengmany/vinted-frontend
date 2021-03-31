@@ -1,5 +1,5 @@
 import "./App.css";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -13,6 +13,7 @@ import {
 //Import components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Loader from "react-loader-spinner";
 
 //Import containers
 import Home from "./containers/Home";
@@ -58,14 +59,9 @@ function App() {
     };
     useEffect(() => {
         //axios request
-        const fetchDta = async () => {
+        const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${
-                    //     sortPrice ? "price-desc" : "price-asc"
-                    // }&priceMin=${range[0]}&priceMax=${
-                    //     range[1]
-                    // }&page=${page}&limit=${limit}`
                     `https://vinted-api-backend.herokuapp.com/offers?title=${search}&sort=${
                         sortPrice ? "price-desc" : "price-asc"
                     }&priceMin=${range[0]}&priceMax=${
@@ -82,7 +78,7 @@ function App() {
                 console.log(error.response);
             }
         };
-        fetchDta();
+        fetchData();
     }, [
         search,
         setSearch,
@@ -97,7 +93,15 @@ function App() {
     ]);
 
     return isLoading ? (
-        <span>En cours de chargement...</span>
+        <div className="loader-container">
+            <Loader
+                className="loader"
+                type="Puff"
+                color="#2eb0ba"
+                height={100}
+                width={100}
+            />
+        </div>
     ) : (
         <Router>
             <Header

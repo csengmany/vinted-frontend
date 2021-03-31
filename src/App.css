@@ -201,7 +201,7 @@
 }
 .home-tear {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
 }
 
 .home-no-offer {
@@ -748,4 +748,15 @@ input[type="file"] {
     opacity: 0;
     width: 0;
     height: 0;
+}
+.loader-container {
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkoutForm .loader {
+    display: flex;
+    justify-content: center;
 }

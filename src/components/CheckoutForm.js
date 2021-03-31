@@ -2,18 +2,20 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Loader from "react-loader-spinner";
 
 const CheckoutForm = ({ amount, name, owner }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [succeeded, setSucceeded] = useState("");
-    console.log("amount, name, owner", amount, name, owner);
+    const [isLoading, setIsLoading] = useState(false);
 
     const idUser = Cookies.get("userToken");
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
+            setIsLoading(true);
             // get bank details entered by user
             const cardElements = elements.getElement(CardElement);
 
@@ -28,7 +30,6 @@ const CheckoutForm = ({ amount, name, owner }) => {
 
             const response = await axios.post(
                 "https://vinted-api-backend.herokuapp.com/payment",
-                // "https://lereacteur-vinted-api.herokuapp.com/payment",
                 {
                     amount,
                     name,
@@ -37,6 +38,7 @@ const CheckoutForm = ({ amount, name, owner }) => {
             );
             console.log("response status", response.status);
             if (response.status === 200) {
+                setIsLoading(false);
                 setSucceeded(
                     `Achat réalisé avec succès ! Maintenant, attends que ${owner} t'envoie le colis`
                 );
@@ -51,6 +53,17 @@ const CheckoutForm = ({ amount, name, owner }) => {
                 <CardElement className="cardElement" />
                 <button type="submit">Acheter</button>
             </form>
+            {isLoading && (
+                <div>
+                    <Loader
+                        className="loader"
+                        type="Puff"
+                        color="#00c06d"
+                        height={20}
+                        width={20}
+                    />
+                </div>
+            )}
             <p>{succeeded}</p>
         </div>
     );

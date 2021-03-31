@@ -1,6 +1,6 @@
 import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import Loader from "react-loader-spinner";
 import axios from "axios";
 
 const Offer = () => {
@@ -15,7 +15,6 @@ const Offer = () => {
         const fetchDta = async () => {
             try {
                 const response = await axios.get(
-                    // `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
                     `https://vinted-api-backend.herokuapp.com/offer/${id}`
                 );
                 console.log("data", response.data);
@@ -29,7 +28,15 @@ const Offer = () => {
     }, [id]);
 
     return isLoading ? (
-        <span>En cours de chargement...</span>
+        <div className="loader-container">
+            <Loader
+                className="loader"
+                type="Puff"
+                color="#2eb0ba"
+                height={100}
+                width={100}
+            />
+        </div>
     ) : (
         <div className="offer">
             <div className="offer-container">
