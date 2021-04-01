@@ -14,7 +14,7 @@ This project is a little clone of Vinted, a website that sells second hand cloth
 <img
 		width="900"
 		alt="vinted gif"
-		src="https://github.com/csengmany/vinted-frontend/blob/main/preview/vinted.gif">
+		src="./preview/vinted.gif">
 
 ### Built with
 
